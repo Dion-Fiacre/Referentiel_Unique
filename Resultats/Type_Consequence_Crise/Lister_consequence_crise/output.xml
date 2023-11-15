@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231114 02:23:40.605" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister consequence crise" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Tets_cases\Type_Consequence_Crise\Lister_consequence_crise.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231114 02:23:40.960" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231114 02:23:40.960" endtime="20231114 02:23:40.960"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231114 02:23:40.960" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk5MjUyMDIsImlhdCI6MTY5OTkyNDkwMiwianRpIjoiY2RhZT...</msg>
+<status status="PASS" starttime="20231114 02:23:40.960" endtime="20231114 02:23:40.960"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231114 02:23:40.960" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231114 02:23:41.656" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises 
+ path_url=/api/type-consequences-crises 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk5MjUyMDIsImlhdCI6MTY5OTkyNDkwMiwianRpIjoiY2RhZTczNjUtYjUwMi00YjNiLWJhYWYtNmNkZTM3ODkzYTliIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiMGViOGJkYmMtMDE5My00MTJmLWI2YWMtMTVlNjdiZGIyMDMyIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiIwZWI4YmRiYy0wMTkzLTQxMmYtYjZhYy0xNWU2N2JkYjIwMzIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.bDCo6T_goENbuc0PNQ_MOj23gS0U1HEHhD_eh5LJdaH5LgAyDsXtI_PH-iOAsSQtz5uFkDdC4ssWmpN_YlUVAJwVCJCYHj-0UnO_ipbGkVq2QGd0YQNUQoYSvvgbp2nNPtb-04lqIW82kRiJNxcEtnPBDxJzE9f6XQXa3svOIfWnr5URYeblCS96odcSTO3ieFRED1pdcAa6uPi8e2u3mZMYXk07TjnmaPQZj4Gsdt5ixluy7HFhghl4bbNO_QQWs9xgG24-nzjRkegmvKNLZJT3EnhOfOR_3e_MYiRvggrRlVGF1QOkQZwjsAnCMBEB10u1ZpvcoALRvkV7f-p34w', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231114 02:23:41.673" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Tue, 14 Nov 2023 01:23:42 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "_embedded" : {
+    "typeconsequencecrise" : [ {
+      "code" : "1",
+      "libelle" : "Arrêt des cours",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/1"
+        },
+        "typeConsequencesCrises" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/1"
+        }
+      }
+    }, {
+      "code" : "2",
+      "libelle" : "Bâtiments détruits",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/2"
+        },
+        "typeConsequencesCrises" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/2"
+        }
+      }
+    }, {
+      "code" : "3",
+      "libelle" : "Indisponibilité d’enseignants",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/3"
+        },
+        "typeConsequencesCrises" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/3"
+        }
+      }
+    }, {
+      "code" : "4",
+      "libelle" : "Occupation des bâtiments de l’établissement",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/4"
+        },
+        "typeConsequencesCrises" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/4"
+        }
+      }
+    }, {
+      "code" : "5",
+      "libelle" : "Matériels didactiques détruits",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/5"
+        },
+        "typeConsequencesCrises" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/5"
+        }
+      }
+    }, {
+      "code" : "6",
+      "libelle" : "Baisse des effectifs (déplacements d’élèves et enseignants)",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/6"
+        },
+        "typeConsequencesCrises" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/6"
+        }
+      }
+    }, {
+      "code" : "7",
+      "libelle" : "Augmentation des effectifs (intégration d’élèves déplacés)",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/7"
+        },
+        "typeConsequencesCrises" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/7"
+        }
+      }
+    }, {
+      "code" : "8",
+      "libelle" : "Autre",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/8"
+        },
+        "typeConsequencesCrises" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises/8"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-consequences-crises"
+    },
+    "profile" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-consequences-crises"
+    }
+  }
+} 
+ </msg>
+<msg timestamp="20231114 02:23:41.673" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231114 02:23:40.960" endtime="20231114 02:23:41.673"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 02:23:41.673" endtime="20231114 02:23:41.673"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 02:23:41.673" endtime="20231114 02:23:41.673"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 02:23:41.673" endtime="20231114 02:23:41.673"/>
+</kw>
+<status status="PASS" starttime="20231114 02:23:40.960" endtime="20231114 02:23:41.673"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231114 02:23:40.613" endtime="20231114 02:23:41.681"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister consequence crise">Lister consequence crise</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231114 02:23:40.960" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

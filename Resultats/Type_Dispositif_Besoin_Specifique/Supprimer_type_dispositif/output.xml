@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231114 18:25:58.421" rpa="false" schemaversion="4">
+<suite id="s1" name="Supprimer type dispositif" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Tets_cases\Type_Dispositif_Besoin_Specifique\Supprimer_type_dispositif.robot">
+<test id="s1-t1" name="Test Case" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231114 18:25:58.520" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231114 18:25:58.520" endtime="20231114 18:25:58.520"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>customerName=fiacre</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231114 18:25:58.521" level="INFO">${body} = {'customerName': 'fiacre'}</msg>
+<status status="PASS" starttime="20231114 18:25:58.521" endtime="20231114 18:25:58.521"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231114 18:25:58.522" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk5ODMwMTksImlhdCI6MTY5OTk4MjcxOSwianRpIjoiYjVmMj...</msg>
+<status status="PASS" starttime="20231114 18:25:58.522" endtime="20231114 18:25:58.522"/>
+</kw>
+<kw name="Delete Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `DELETE On Session` instead.</doc>
+<msg timestamp="20231114 18:25:58.522" level="WARN">Keyword 'RequestsLibrary.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
+<msg timestamp="20231114 18:25:58.876" level="INFO">DELETE Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-dispositif-besoin-specifiques/1 
+ path_url=/api/type-dispositif-besoin-specifiques/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk5ODMwMTksImlhdCI6MTY5OTk4MjcxOSwianRpIjoiYjVmMjg5MTMtZDVkNC00ZTI2LWE2ZWUtNThlZDU5ODhmOWY2IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiNTY2OWI3NDAtYWYzMi00OWI5LWEyMWQtNjFkMTdiNGJlZWJlIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI1NjY5Yjc0MC1hZjMyLTQ5YjktYTIxZC02MWQxN2I0YmVlYmUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.dEs7ukL8lHEwqEmfsP_1QbqEsFH4mWuTJRia8xVbCujVhO-q6WRdzaf_xtMTwgQcYA0VRRBDst3kl0k1v9tvqnqi_gB-66uA9iadH4-YoUaZtZ8xgzEwkLyEvgFtnB7YNbZl7lY2Ws3LF8qmvHvl5jtGhIMRB0UrfdI0_RvQGj9Gp8YWVvSTrIrS18RAMiHHC4OGKGx2s24Ygbu6Rl7r_sNFY4gvLKLxlMe_skNYZZaPhb_Wl-7TjslBndqi-ZhhPG6BwTu7EJ7W_KaWNpbMiYq1AZJbjB24B4vPyNGjnqh0IUP5xWPPs_8gt2gAXg8lp7l7tUb2hbmoNPqypYHjeg', 'Content-Type': 'application/json', 'Content-Length': '26'} 
+ body={"customerName": "fiacre"} 
+ </msg>
+<msg timestamp="20231114 18:25:58.880" level="INFO">DELETE Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-dispositif-besoin-specifiques/1 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Tue, 14 Nov 2023 17:25:58 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "code" : "1",
+  "libelle" : "Rampe ",
+  "description" : null,
+  "dateDebut" : "2023-11-12",
+  "dateFin" : null,
+  "isdelete" : false,
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-dispositif-besoin-specifiques/1"
+    },
+    "typeDispositifBesoinSpecifique" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-dispositif-besoin-specifiques/1"
+    }
+  }
+} 
+ </msg>
+<msg timestamp="20231114 18:25:58.880" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231114 18:25:58.522" endtime="20231114 18:25:58.880"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 18:25:58.881" endtime="20231114 18:25:58.882"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 18:25:58.883" endtime="20231114 18:25:58.884"/>
+</kw>
+<status status="PASS" starttime="20231114 18:25:58.520" endtime="20231114 18:25:58.885"/>
+</test>
+<status status="PASS" starttime="20231114 18:25:58.423" endtime="20231114 18:25:58.887"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Supprimer type dispositif">Supprimer type dispositif</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231114 18:25:58.522" level="WARN">Keyword 'RequestsLibrary.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
+</errors>
+</robot>

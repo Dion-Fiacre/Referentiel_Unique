@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231114 01:45:29.736" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister confession" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Tets_cases\Type_Confession\Lister_confession.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231114 01:45:30.000" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231114 01:45:30.000" endtime="20231114 01:45:30.001"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231114 01:45:30.001" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk5MjI5MzYsImlhdCI6MTY5OTkyMjYzNiwianRpIjoiOTdkM2...</msg>
+<status status="PASS" starttime="20231114 01:45:30.001" endtime="20231114 01:45:30.002"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231114 01:45:30.002" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231114 01:45:30.542" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions 
+ path_url=/api/type-confessions 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk5MjI5MzYsImlhdCI6MTY5OTkyMjYzNiwianRpIjoiOTdkM2ZjODItYmMyZC00ZmIyLTkxNzctYjY1Y2E1YmU3YmY5IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiMjViNDQ1NmMtNmExOS00YmU4LTllNzctNTlmY2Q3Y2JlNDEzIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiIyNWI0NDU2Yy02YTE5LTRiZTgtOWU3Ny01OWZjZDdjYmU0MTMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.fVpjKyO8AcuwCm-K7NWtfYR-mxt5GxR6NKYaJCN5Etdn4vVxUFMFvuaXFZ9y3MmPu8r5vXIGwsavnFQbA8k_xzbGv1BwzIckkpaWsTwArNjiXxLGid5iG8d9BwDAvk4gF655jsuINjDm1BEOPv-MCZzkbKrOFRaDDTOaKV17_Qwsrug6cBBCpD57r8G1PFf6bSsyCWpA5HDhATRaVMs05zfOz37TgGrlNlVhfP3SvbDIeBGcHJBSf9LbtUsGNfMRZ6btNvxGZ8Unw_JFoGh8KCqc7rcNQizqCDqk0ZsXlWypkHip8jbTiGp5sC_JFXZjNzCAshg0KILh5PUh6661WQ', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231114 01:45:30.562" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Tue, 14 Nov 2023 00:45:31 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "_embedded" : {
+    "typeconfession" : [ {
+      "code" : "2",
+      "libelle" : "Adventiste",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions/2"
+        },
+        "typeConfession" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions/2"
+        }
+      }
+    }, {
+      "code" : "3",
+      "libelle" : "Méthodiste",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions/3"
+        },
+        "typeConfession" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions/3"
+        }
+      }
+    }, {
+      "code" : "4",
+      "libelle" : "Evangélique",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions/4"
+        },
+        "typeConfession" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions/4"
+        }
+      }
+    }, {
+      "code" : "5",
+      "libelle" : "Assemblée de Dieu",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions/5"
+        },
+        "typeConfession" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions/5"
+        }
+      }
+    }, {
+      "code" : "6",
+      "libelle" : "Islamique",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions/6"
+        },
+        "typeConfession" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions/6"
+        }
+      }
+    }, {
+      "code" : "7",
+      "libelle" : "Autre",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions/7"
+        },
+        "typeConfession" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions/7"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-confessions"
+    },
+    "profile" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-confessions"
+    }
+  }
+} 
+ </msg>
+<msg timestamp="20231114 01:45:30.562" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231114 01:45:30.002" endtime="20231114 01:45:30.562"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 01:45:30.563" endtime="20231114 01:45:30.564"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 01:45:30.564" endtime="20231114 01:45:30.566"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 01:45:30.567" endtime="20231114 01:45:30.567"/>
+</kw>
+<status status="PASS" starttime="20231114 01:45:29.999" endtime="20231114 01:45:30.568"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231114 01:45:29.740" endtime="20231114 01:45:30.569"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister confession">Lister confession</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231114 01:45:30.002" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

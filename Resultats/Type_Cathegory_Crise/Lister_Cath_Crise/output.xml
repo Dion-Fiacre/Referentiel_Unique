@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231113 17:51:55.921" rpa="false" schemaversion="4">
+<suite id="s1" name="Afficher 1 cath" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Tets_cases\Type_Cathegory_Crise\Afficher_1_cath.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231113 17:51:56.111" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231113 17:51:56.111" endtime="20231113 17:51:56.111"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231113 17:51:56.111" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk4OTQ1NzgsImlhdCI6MTY5OTg5NDI3OCwianRpIjoiZDAzMz...</msg>
+<status status="PASS" starttime="20231113 17:51:56.111" endtime="20231113 17:51:56.111"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231113 17:51:56.111" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231113 17:51:56.901" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-categorie-cause-crise-scolaires1 
+ path_url=/api/type-categorie-cause-crise-scolaires1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk4OTQ1NzgsImlhdCI6MTY5OTg5NDI3OCwianRpIjoiZDAzMzY0ZTAtNWZjNS00YmRhLWI1YjItNTYyMGZjNjExNjE4IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiMTk4MTJhY2QtNjQ3ZS00ZDk3LTliOGItMjM0NzFkMWIyYmVlIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiIxOTgxMmFjZC02NDdlLTRkOTctOWI4Yi0yMzQ3MWQxYjJiZWUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.uqkaggF57-chXQQJkppBHNz-m-KKqo9uuDYvjXm3JhHQvnmdlxKQM3obiz6PsVbQvrXQqjTuO3d9SeScuhsXNc8jX1PB6vJwB3Mjcp75SttHIu-LOTAGLTp1VrHH0c0aDrwSAWHRCKR_XvLZ7sRqQZxgjkTTzA8avJy5J4eoZ3B6POtL6_cD5KKJPWes2JBVImXrTTAmWjrOLbMm1qOHvOB_waRpUa3c6TWD53JHpyA8obLVl1BxD1l2VU459z-ufJV-4KXAwWqqdZS9TXTHAzuJkMMmIfrJgUzuyMaEwOtxubc_trcaOpvP3ww-HBa4KL_qs6hxcV053bYjIMVyNA', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231113 17:51:56.901" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-categorie-cause-crise-scolaires1 
+ status=404, reason=Not Found 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Mon, 13 Nov 2023 16:51:57 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={"timestamp":"2023-11-13T16:51:57.707+00:00","status":404,"error":"Not Found","path":"/api/type-categorie-cause-crise-scolaires1"} 
+ </msg>
+<msg timestamp="20231113 17:51:56.901" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20231113 17:51:56.111" endtime="20231113 17:51:56.901"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231113 17:51:56.901" endtime="20231113 17:51:56.901"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231113 17:51:56.901" endtime="20231113 17:51:56.901"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231113 17:51:56.911" endtime="20231113 17:51:56.911"/>
+</kw>
+<status status="PASS" starttime="20231113 17:51:56.111" endtime="20231113 17:51:56.911"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231113 17:51:55.921" endtime="20231113 17:51:56.911"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Afficher 1 cath">Afficher 1 cath</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231113 17:51:56.111" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

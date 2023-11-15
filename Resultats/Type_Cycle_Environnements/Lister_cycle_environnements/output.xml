@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231114 14:48:14.313" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister cycle environnements" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Tets_cases\Type_Cycle_Environnements\Lister_cycle_environnements.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231114 14:48:14.523" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231114 14:48:14.523" endtime="20231114 14:48:14.523"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231114 14:48:14.524" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk5Njk4NzQsImlhdCI6MTY5OTk2OTU3NCwianRpIjoiY2Q1OD...</msg>
+<status status="PASS" starttime="20231114 14:48:14.524" endtime="20231114 14:48:14.524"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231114 14:48:14.525" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231114 14:48:14.885" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements 
+ path_url=/api/type-cycle-enseignements 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk5Njk4NzQsImlhdCI6MTY5OTk2OTU3NCwianRpIjoiY2Q1ODdlMGItZDY2Yy00MjZkLWExYzgtZmM4YmExODc4YTk4IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiYTE0MjAxM2ItOGYyMi00NzNkLWE4MzgtNTkyOGEyYWQyNGU0IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJhMTQyMDEzYi04ZjIyLTQ3M2QtYTgzOC01OTI4YTJhZDI0ZTQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.UTwPWWH2GLF7Orw39YctkSlrGiek_9aXrw6LocBLaoPF3QWgupBp7luj2hulzWOHK5T13rwyPvwCZFzsMAv8F41Pdf40aqJKE6yFiAgQ-vHpZbNmgtmrmnXcd1fmUXd1KI9Y-ArYmhP6vhKdP_nKPodzkCHwRD5-ZsTMkuiN0WRBKw9jJnDSIeVTKgdIeTogbHSNIAZHv2bOdmc5hfnN5mDL7uACFLKrmd3XQJm8RWTCqbscVF7SUnjzmt79hApXg5bAuTOGn-DOLRjktbK6G-gL5MryPISOPrZpEN9Zp-2UI5fdBslHVSoI_QxzD-NFcVISvb5zElIQewmH4eOMBw', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231114 14:48:14.908" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Tue, 14 Nov 2023 13:48:14 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "_embedded" : {
+    "typecycleenvironnement" : [ {
+      "code" : "1",
+      "libelle" : "Préscolaire",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements/1"
+        },
+        "typeCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements/1"
+        }
+      }
+    }, {
+      "code" : "2",
+      "libelle" : "Primaire",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements/2"
+        },
+        "typeCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements/2"
+        }
+      }
+    }, {
+      "code" : "3",
+      "libelle" : "1er Cycle de l’Enseignement Secondaire",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements/3"
+        },
+        "typeCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements/3"
+        }
+      }
+    }, {
+      "code" : "4",
+      "libelle" : "2ème Cycle de l’Enseignement Secondaire",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements/4"
+        },
+        "typeCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements/4"
+        }
+      }
+    }, {
+      "code" : "5",
+      "libelle" : "1er et 2ème Cycle",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements/5"
+        },
+        "typeCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements/5"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-cycle-enseignements"
+    },
+    "profile" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-cycle-enseignements"
+    }
+  }
+} 
+ </msg>
+<msg timestamp="20231114 14:48:14.908" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231114 14:48:14.525" endtime="20231114 14:48:14.908"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 14:48:14.909" endtime="20231114 14:48:14.910"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 14:48:14.910" endtime="20231114 14:48:14.912"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 14:48:14.913" endtime="20231114 14:48:14.913"/>
+</kw>
+<status status="PASS" starttime="20231114 14:48:14.522" endtime="20231114 14:48:14.914"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231114 14:48:14.316" endtime="20231114 14:48:14.915"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister cycle environnements">Lister cycle environnements</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231114 14:48:14.525" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231113 15:47:26.044" rpa="false" schemaversion="4">
+<suite id="s1" name="Creer env" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Tets_cases\Environnements\Creer_env.robot">
+<test id="s1-t1" name="Test Case" line="12">
+<kw name="TokenAuthPost">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231113 15:47:26.275" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/v1/environnements, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231113 15:47:26.275" endtime="20231113 15:47:26.276"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>code=test</arg>
+<arg>libelle=test</arg>
+<arg>description=test</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231113 15:47:26.276" level="INFO">${body} = {'code': 'test', 'libelle': 'test', 'description': 'test'}</msg>
+<status status="PASS" starttime="20231113 15:47:26.276" endtime="20231113 15:47:26.276"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231113 15:47:26.276" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk4ODY5OTYsImlhdCI6MTY5OTg4NjY5NiwianRpIjoiYjdkNj...</msg>
+<status status="PASS" starttime="20231113 15:47:26.276" endtime="20231113 15:47:26.277"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20231113 15:47:26.277" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20231113 15:47:26.743" level="INFO">POST Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/v1/environnements 
+ path_url=/api/v1/environnements 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk4ODY5OTYsImlhdCI6MTY5OTg4NjY5NiwianRpIjoiYjdkNjUwNmQtMWEwZC00Y2UxLWE2Y2EtOWU0ZWMzZTllY2YyIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiODQzMmNkM2EtZTM3OC00N2NhLWFmZDktN2Y1OTczOGFjN2U4IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI4NDMyY2QzYS1lMzc4LTQ3Y2EtYWZkOS03ZjU5NzM4YWM3ZTgiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.rJxkmoiC9G9si-ZH33IGlTsULLK2GOq1AJPAAMzeZrVnN9fe8j-dHLprW9U7H7wB-W3FJTxkohq3dqZRbCEAc_c8Sl77hrbe-qtMU1o1TNLCtfmg5rVfueHygWTzuGBxIkz4-7ggfefPI4G3qRR0qk7NnA7WGmvUMJrvfSsxfomfLmhN21CMmQALBXCOh5OsMqPUlMQrG8icre3jQ22RxMFA22wry8Xxg1D3JAHsw_zt5o-e26F208jjceCxFks2DXqnb-XDjAlIHuDcgqK5mqSlr72XXufBKO-_f8z7hklKNb4l6cNPAf0Kj-_L13THgK84s7op2XGCTaLTz-dS8A', 'Content-Type': 'application/json', 'Content-Length': '58'} 
+ body={"code": "test", "libelle": "test", "description": "test"} 
+ </msg>
+<msg timestamp="20231113 15:47:26.744" level="INFO">POST Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/v1/environnements 
+ status=201, reason=Created 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Mon, 13 Nov 2023 14:47:27 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"","content":{"id":6,"code":"ENV07","libelle":"test","description":"test"},"statut":true} 
+ </msg>
+<msg timestamp="20231113 15:47:26.744" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20231113 15:47:26.277" endtime="20231113 15:47:26.744"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231113 15:47:26.744" endtime="20231113 15:47:26.745"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231113 15:47:26.745" endtime="20231113 15:47:26.747"/>
+</kw>
+<status status="PASS" starttime="20231113 15:47:26.275" endtime="20231113 15:47:26.747"/>
+</kw>
+<status status="PASS" starttime="20231113 15:47:26.274" endtime="20231113 15:47:26.747"/>
+</test>
+<doc>Créer un nouveau environnement</doc>
+<status status="PASS" starttime="20231113 15:47:26.046" endtime="20231113 15:47:26.749"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Creer env">Creer env</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231113 15:47:26.277" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+</errors>
+</robot>

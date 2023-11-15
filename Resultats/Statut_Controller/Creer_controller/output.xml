@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231113 16:37:21.957" rpa="false" schemaversion="4">
+<suite id="s1" name="Creer controller" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Tets_cases\Statut_Controller\Creer_controller.robot">
+<test id="s1-t1" name="Test Case" line="12">
+<kw name="TokenAuthPost">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231113 16:37:22.140" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/v1/statuts, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231113 16:37:22.140" endtime="20231113 16:37:22.140"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>code=string</arg>
+<arg>libelle=string</arg>
+<arg>description=string</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231113 16:37:22.140" level="INFO">${body} = {'code': 'string', 'libelle': 'string', 'description': 'string'}</msg>
+<status status="PASS" starttime="20231113 16:37:22.140" endtime="20231113 16:37:22.140"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231113 16:37:22.140" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk4OTAwMzYsImlhdCI6MTY5OTg4OTczNiwianRpIjoiYjdlNz...</msg>
+<status status="PASS" starttime="20231113 16:37:22.140" endtime="20231113 16:37:22.140"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20231113 16:37:22.140" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20231113 16:37:22.719" level="INFO">POST Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/v1/statuts 
+ path_url=/api/v1/statuts 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk4OTAwMzYsImlhdCI6MTY5OTg4OTczNiwianRpIjoiYjdlNzFhZTItYzE4Ni00NDlhLWJmNDgtNDMwMTVlYzRmZDQ4IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiMGU4MDhhY2EtYzYzOC00NzdiLTk2ZDItYWU4MTlkNWUxYTI1IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiIwZTgwOGFjYS1jNjM4LTQ3N2ItOTZkMi1hZTgxOWQ1ZTFhMjUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.oYfDk-Lq1kI17DgXaypJDrO-72NtCpvLjC8_kiW02iRPsWETHN71XukElcFDejnRrBrB726YJkJYlpajMikItfXTABS5hr2SjbdW0cF1f1cMtj8EKq46sEMZp9ozQiK1urgR4edEejxe8X_ICZsLExqCy9W2divOG9kHNQnf-r9QxTcR8wyuIWvtXiTeMGgUtY1OJrDUe2zS9gN2khtWDe9cx4LVOSrvTVecR_tM2pJUeC1yJE92uc5WFR-mLEbpGms_Xj-E7tHcBjw_N7RHHPuqqh3rz1bEwRU_hYdDlHMJY3eyNDdVuvqb2V2KWEVA0MYPdI1ZzfDEK2A9eH5Gmg', 'Content-Type': 'application/json', 'Content-Length': '64'} 
+ body={"code": "string", "libelle": "string", "description": "string"} 
+ </msg>
+<msg timestamp="20231113 16:37:22.719" level="INFO">POST Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/v1/statuts 
+ status=201, reason=Created 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Mon, 13 Nov 2023 15:37:23 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"","content":{"id":4,"code":"ST005","libelle":"string","description":"string"},"statut":true} 
+ </msg>
+<msg timestamp="20231113 16:37:22.719" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20231113 16:37:22.140" endtime="20231113 16:37:22.719"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231113 16:37:22.719" endtime="20231113 16:37:22.719"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231113 16:37:22.719" endtime="20231113 16:37:22.719"/>
+</kw>
+<status status="PASS" starttime="20231113 16:37:22.140" endtime="20231113 16:37:22.719"/>
+</kw>
+<status status="PASS" starttime="20231113 16:37:22.136" endtime="20231113 16:37:22.719"/>
+</test>
+<doc>Créer une nouvelle application</doc>
+<status status="PASS" starttime="20231113 16:37:21.957" endtime="20231113 16:37:22.719"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Creer controller">Creer controller</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231113 16:37:22.140" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+</errors>
+</robot>

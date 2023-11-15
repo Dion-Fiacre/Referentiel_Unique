@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231114 17:08:35.509" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister type activite cooperative" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Tets_cases\Type_Activites_Cooperatives\Lister_type_activite_cooperative.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231114 17:08:35.658" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231114 17:08:35.658" endtime="20231114 17:08:35.658"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231114 17:08:35.659" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk5NzgzMDEsImlhdCI6MTY5OTk3ODAwMSwianRpIjoiYzRjMT...</msg>
+<status status="PASS" starttime="20231114 17:08:35.658" endtime="20231114 17:08:35.659"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231114 17:08:35.659" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231114 17:08:36.027" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives 
+ path_url=/api/type-activite-cooperatives 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk5NzgzMDEsImlhdCI6MTY5OTk3ODAwMSwianRpIjoiYzRjMTY4YWEtYjIzZC00ZGRjLTllMDYtM2UxZDNjM2Q0YmRmIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiNDA2YzQ1ODgtMWI4Yi00YmUyLWFiYjMtODIyNjFlMTZhMjAwIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI0MDZjNDU4OC0xYjhiLTRiZTItYWJiMy04MjI2MWUxNmEyMDAiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.m2uNglr1IRvcdIeyeysZ_PNsFc-iFWzlaiqVmM0N2iwQ-IlZZpamIIHuuAXNBOI6ECNr8AUHngfPzm6LuYvuTEU2pv3L1zaKm7a8Cv2J5acXhRHHEwXlxLDx3FGIUZL50Oi5Xk4KE-uQwItraNloWuP2nk5mxw9A-dk9EAVcYTUO1ogfmRZporJnJhwgKIJ6GJRgs_DnJXFGWOC1JBeFr36pasXEXbupeyRbP_uMXGxEHnfoyUC9I7KQzcDaosBktFWQ6kGPEuEflfbkAWNPNhdg3OMztnWhSkfwZUJK3BViKEvdQDZvFWy_aiUyfHgFWYsopRv-9HlRhbhFREufoA', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231114 17:08:36.035" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Tue, 14 Nov 2023 16:08:35 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "_embedded" : {
+    "typeactivitescooperative" : [ {
+      "code" : "1",
+      "libelle" : "Jardin scolaire",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives/1"
+        },
+        "typeActivitesCooperative" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives/1"
+        }
+      }
+    }, {
+      "code" : "2",
+      "libelle" : "Elevage",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives/2"
+        },
+        "typeActivitesCooperative" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives/2"
+        }
+      }
+    }, {
+      "code" : "3",
+      "libelle" : "Artisanat",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives/3"
+        },
+        "typeActivitesCooperative" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives/3"
+        }
+      }
+    }, {
+      "code" : "4",
+      "libelle" : "Petit commerce",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives/4"
+        },
+        "typeActivitesCooperative" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives/4"
+        }
+      }
+    }, {
+      "code" : "5",
+      "libelle" : "Couture",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives/5"
+        },
+        "typeActivitesCooperative" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives/5"
+        }
+      }
+    }, {
+      "code" : "6",
+      "libelle" : "Autre",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives/6"
+        },
+        "typeActivitesCooperative" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives/6"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-activite-cooperatives"
+    },
+    "profile" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-activite-cooperatives"
+    }
+  }
+} 
+ </msg>
+<msg timestamp="20231114 17:08:36.035" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231114 17:08:35.659" endtime="20231114 17:08:36.035"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 17:08:36.035" endtime="20231114 17:08:36.036"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 17:08:36.036" endtime="20231114 17:08:36.037"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 17:08:36.038" endtime="20231114 17:08:36.038"/>
+</kw>
+<status status="PASS" starttime="20231114 17:08:35.657" endtime="20231114 17:08:36.039"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231114 17:08:35.510" endtime="20231114 17:08:36.039"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister type activite cooperative">Lister type activite cooperative</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231114 17:08:35.659" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231114 01:04:16.924" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister commune" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Tets_cases\Type_Commune\Lister_commune.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231114 01:04:17.036" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231114 01:04:17.036" endtime="20231114 01:04:17.036"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231114 01:04:17.037" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk5MjA0MjAsImlhdCI6MTY5OTkyMDEyMCwianRpIjoiZmEzNT...</msg>
+<status status="PASS" starttime="20231114 01:04:17.037" endtime="20231114 01:04:17.037"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231114 01:04:17.037" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231114 01:04:17.575" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-communes 
+ path_url=/api/type-communes 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE2OTk5MjA0MjAsImlhdCI6MTY5OTkyMDEyMCwianRpIjoiZmEzNTZjYzktNjgyYS00ODQxLWE1ZDQtYzdiMGI2MTE4ZmZiIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiN2E0MmZmODUtNzQyYy00NGY0LWIwOTktNTgxMzdlMDBkZjgxIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI3YTQyZmY4NS03NDJjLTQ0ZjQtYjA5OS01ODEzN2UwMGRmODEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.loEgmagK8qZ3x-9KXw-FAsZvoAhb4SC8oYJyeZ_hefZKzzqJODn2-PwgVNGUaGUinr-gExs6Bx9IjWmVfBt6-0iJJy0EAu5Ml6X2STLrcXF48ocOwq7dVZZoxsA40GAKxkQT_6oiRPSe7dv3j0C4Vx8C1AAfNr_stY-DS6jL1whMWSPYPhEnOErQyxPoDwGflr2XSJdkWjkzHJs_31QDBwiCOsk6sxo7RAhLKWScozzf0oh5BBTriAUSyHzPZ7uB8Zxj_vYDmk2iUDRYm83UIsPk36h5aml3_QqTxLhni0VVwa4AlmLFMqvw0QNgl0S2WQVtvt5ltLxlXJbLcxkwIA', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231114 01:04:17.602" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-communes 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Tue, 14 Nov 2023 00:04:18 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "_embedded" : {
+    "typecommune" : [ {
+      "code" : "02010501",
+      "libelle" : "San Pedro",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-communes/2"
+        },
+        "typeCommune" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-communes/2"
+        }
+      }
+    }, {
+      "code" : "02020201",
+      "libelle" : "Grabo",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-communes/3"
+        },
+        "typeCommune" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-communes/3"
+        }
+      }
+    }, {
+      "code" : "02020401",
+      "libelle" : "Tabou",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-communes/4"
+        },
+        "typeCommune" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-communes/4"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-communes"
+    },
+    "profile" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-communes"
+    }
+  }
+} 
+ </msg>
+<msg timestamp="20231114 01:04:17.602" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231114 01:04:17.037" endtime="20231114 01:04:17.602"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 01:04:17.603" endtime="20231114 01:04:17.604"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 01:04:17.604" endtime="20231114 01:04:17.605"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231114 01:04:17.606" endtime="20231114 01:04:17.607"/>
+</kw>
+<status status="PASS" starttime="20231114 01:04:17.036" endtime="20231114 01:04:17.607"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231114 01:04:16.925" endtime="20231114 01:04:17.608"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister commune">Lister commune</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231114 01:04:17.037" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>
