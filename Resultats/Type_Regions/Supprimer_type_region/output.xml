@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231115 23:57:08.931" rpa="false" schemaversion="4">
+<suite id="s1" name="Supprimer type regions" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Type_Regions\Supprimer_type_regions.robot">
+<test id="s1-t1" name="Test Case" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231115 23:57:09.047" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231115 23:57:09.047" endtime="20231115 23:57:09.047"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>customerName=fiacre</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231115 23:57:09.047" level="INFO">${body} = {'customerName': 'fiacre'}</msg>
+<status status="PASS" starttime="20231115 23:57:09.047" endtime="20231115 23:57:09.047"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231115 23:57:09.047" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAwODkzMTAsImlhdCI6MTcwMDA4OTAxMCwianRpIjoiY2M5OG...</msg>
+<status status="PASS" starttime="20231115 23:57:09.047" endtime="20231115 23:57:09.047"/>
+</kw>
+<kw name="Delete Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `DELETE On Session` instead.</doc>
+<msg timestamp="20231115 23:57:09.047" level="WARN">Keyword 'RequestsLibrary.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
+<msg timestamp="20231115 23:57:09.929" level="INFO">DELETE Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-regions/1 
+ path_url=/api/type-regions/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAwODkzMTAsImlhdCI6MTcwMDA4OTAxMCwianRpIjoiY2M5OGNiZGUtOTRmZC00NWQ3LWJiN2UtZjIwMGRkOTU3NzFlIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiZThlMGM1MmMtYjI2Ny00NDc5LWIxNzAtOTc1MzI5OTFjZGQ4IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJlOGUwYzUyYy1iMjY3LTQ0NzktYjE3MC05NzUzMjk5MWNkZDgiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.U-lb1fqr8dMCLNRVRnvQbAFyT6Ry0hw4RokfZxa4oikhIhO418F3d09stz8qAm10SqIXncPrqPOCLg64UIfFHmtKF04RKgpJWIjiHCSMMUI56X-gWUoKLoUqNMZLPUn0GFrFJfu7xV0f6blv4IwAAGQHqibkFpFqsATqB8gxs2M3jqHSrxi6nKh4PbiCUo3cXulMw7bUOFJ_jyNF_qmHOOgdxf618s-0XeHet3jrdWoC4HapCBZvsFcLA_aLXsAlCFXKB-p_d90F8KjaNJIT1flUVRTs6opbWbxmvHR46hGxfD8JYik1bSzzprV2ZPPtaOx7H-vAVUl0kjBQfvHc9A', 'Content-Type': 'application/json', 'Content-Length': '26'} 
+ body={"customerName": "fiacre"} 
+ </msg>
+<msg timestamp="20231115 23:57:09.929" level="INFO">DELETE Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-regions/1 
+ status=409, reason=Conflict 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Wed, 15 Nov 2023 22:57:10 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={"cause":{"cause":{"cause":null,"message":"ERROR: update or delete on table \"type_region\" violates foreign key constraint \"Region_Fkey\" on table \"type_departement\"\n  Detail: Key (id)=(1) is still referenced from table \"type_departement\"."},"message":"could not execute statement [ERROR: update or delete on table \"type_region\" violates foreign key constraint \"Region_Fkey\" on table \"type_departement\"\n  Detail: Key (id)=(1) is still referenced from table \"type_departement\".] [delete from referentiel.type_region where id=?]"},"message":"could not execute statement [ERROR: update or delete on table \"type_region\" violates foreign key constraint \"Region_Fkey\" on table \"type_departement\"\n  Detail: Key (id)=(1) is still referenced from table \"type_departement\".] [delete from referentiel.type_region where id=?]; SQL [delete from referentiel.type_region where id=?]; constraint [Region_Fkey]"} 
+ </msg>
+<msg timestamp="20231115 23:57:09.929" level="INFO">${response} = &lt;Response [409]&gt;</msg>
+<status status="PASS" starttime="20231115 23:57:09.047" endtime="20231115 23:57:09.929"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231115 23:57:09.929" endtime="20231115 23:57:09.929"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231115 23:57:09.929" endtime="20231115 23:57:09.937"/>
+</kw>
+<status status="PASS" starttime="20231115 23:57:09.047" endtime="20231115 23:57:09.937"/>
+</test>
+<status status="PASS" starttime="20231115 23:57:08.931" endtime="20231115 23:57:09.937"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Supprimer type regions">Supprimer type regions</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231115 23:57:09.047" level="WARN">Keyword 'RequestsLibrary.Delete Request' is deprecated. Please use `DELETE On Session` instead.</msg>
+</errors>
+</robot>

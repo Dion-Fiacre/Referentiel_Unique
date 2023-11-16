@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231116 02:49:21.535" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister type fonctions" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Type_Fonctions\Lister_type_fonctions.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231116 02:49:21.629" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231116 02:49:21.629" endtime="20231116 02:49:21.629"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231116 02:49:21.630" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAwOTk2NTIsImlhdCI6MTcwMDA5OTM1MiwianRpIjoiZjRkZT...</msg>
+<status status="PASS" starttime="20231116 02:49:21.630" endtime="20231116 02:49:21.630"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231116 02:49:21.631" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231116 02:49:22.812" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions 
+ path_url=/api/type-fonctions 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAwOTk2NTIsImlhdCI6MTcwMDA5OTM1MiwianRpIjoiZjRkZTlkNGUtYzhmMS00ODFiLTlkZDktMDc0ZGRiMDBhMDY2IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiYTg3ODZjNWMtMGZkNS00OGVhLWJmYTgtMjE2NTNhZTY0YTZmIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJhODc4NmM1Yy0wZmQ1LTQ4ZWEtYmZhOC0yMTY1M2FlNjRhNmYiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.RlIcQs9zOdJULZBdcs90O8rs583XAkvoWWGxBoKorLypE00UyyPpFHHvW6hnA_z5vHOHyoePV-kuam4Dt72rmWvLH-hk77ZQbcaSNu3c38uW5Bky3GOE9rzfNWxq9Fz3lGuuI_zY4_MF6nu2x9ywkw_sYFFI6ARJEGaBswhSeodT0HYk3Tv2NkUEBPbp_HIIF6YzB9xdkSbVZ8rWvfnSa-4zHVe5UTkRC0Uq1LSQNVAXrAjI1tK1A8QC5U0o2V60r7960aZbtmVP-tOBFASLZ8YCE3bMzkmNviqiwvaByi7OHWOGZGtgvOxN9Wq7mGqjnGIhdLuNacWy0aPu8BdCDg', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231116 02:49:22.837" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Thu, 16 Nov 2023 01:49:23 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "_embedded" : {
+    "typefonction" : [ {
+      "code" : "1",
+      "libelle" : "Directeur d’école primaire",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/1"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/1"
+        }
+      }
+    }, {
+      "code" : "2",
+      "libelle" : "Chargé d’école primaire (3 classes)",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/2"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/2"
+        }
+      }
+    }, {
+      "code" : "3",
+      "libelle" : "Adjoint de directeur d école primaire",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/3"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/3"
+        }
+      }
+    }, {
+      "code" : "4",
+      "libelle" : "Chef d’établissement",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/4"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/4"
+        }
+      }
+    }, {
+      "code" : "5",
+      "libelle" : "Directeur d’étude (école du privé)",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/5"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/5"
+        }
+      }
+    }, {
+      "code" : "6",
+      "libelle" : "Adjoint au chef d’établissement",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/6"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/6"
+        }
+      }
+    }, {
+      "code" : "7",
+      "libelle" : "Chef de Service",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/7"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/7"
+        }
+      }
+    }, {
+      "code" : "8",
+      "libelle" : "Adjoint au chef de service",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/8"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/8"
+        }
+      }
+    }, {
+      "code" : "9",
+      "libelle" : "Inspecteur d’Education",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/9"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/9"
+        }
+      }
+    }, {
+      "code" : "10",
+      "libelle" : "Inspecteur d’Orientation",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/10"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/10"
+        }
+      }
+    }, {
+      "code" : "11",
+      "libelle" : "Educateur",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/11"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/11"
+        }
+      }
+    }, {
+      "code" : "12",
+      "libelle" : "Assistant social",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/12"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/12"
+        }
+      }
+    }, {
+      "code" : "13",
+      "libelle" : "Infirmier",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/13"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/13"
+        }
+      }
+    }, {
+      "code" : "14",
+      "libelle" : "Intendant",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/14"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/14"
+        }
+      }
+    }, {
+      "code" : "15",
+      "libelle" : "Adjoint à l’intendant",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/15"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/15"
+        }
+      }
+    }, {
+      "code" : "16",
+      "libelle" : "Magasinier",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/16"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/16"
+        }
+      }
+    }, {
+      "code" : "17",
+      "libelle" : "Bibliothécaire",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/17"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/17"
+        }
+      }
+    }, {
+      "code" : "18",
+      "libelle" : "Laborantin",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/18"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/18"
+        }
+      }
+    }, {
+      "code" : "19",
+      "libelle" : "Tenant de classe",
+      "description" : null,
+      "dateDebut" : "2023-11-11",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/19"
+        },
+        "typeFonction" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions/19"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-fonctions"
+    },
+    "profile" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-fonctions"
+    }
+  }
+} 
+ </msg>
+<msg timestamp="20231116 02:49:22.838" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231116 02:49:21.631" endtime="20231116 02:49:22.838"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 02:49:22.838" endtime="20231116 02:49:22.839"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 02:49:22.839" endtime="20231116 02:49:22.843"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 02:49:22.844" endtime="20231116 02:49:22.845"/>
+</kw>
+<status status="PASS" starttime="20231116 02:49:21.628" endtime="20231116 02:49:22.846"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231116 02:49:21.537" endtime="20231116 02:49:22.847"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister type fonctions">Lister type fonctions</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231116 02:49:21.631" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

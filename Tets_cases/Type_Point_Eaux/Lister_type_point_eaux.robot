@@ -1,0 +1,20 @@
+*** Settings ***
+Library     RequestsLibrary
+Documentation    Afficher la liste des applications
+
+*** Variables ***
+${base_url}     http://sige-referentiel-service.dev.defisetstrategies.dev/api
+${endpoint}     /type-point-eaux
+${bearerToken}=    Bearer   eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAwODc2ODQsImlhdCI6MTcwMDA4NzM4NCwianRpIjoiZWI4MjcyMmMtMjg1My00NTFmLWE1OWYtOTdiZWQxMzNjODEwIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiMzc3MjI4YTAtMjZjMi00NmEwLWEzODEtZTk4OTc1NzgwNTdhIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiIzNzcyMjhhMC0yNmMyLTQ2YTAtYTM4MS1lOTg5NzU3ODA1N2EiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.qJ1GI3C65qx0mbJsZotE0TjTOfnROVGujWASPbzfwUlm9flKoy9EkbW5M0ECDu9K1AnFALW0WEqPSTkmB7irpdwyaV3nUlPbnpqX_3xUMPWLOITVE038vFqkGlpLYfmGSflT4hZ362rC_yF3iTXv0XBcR4iJDGJ6TcO4hO7oSkftJgqKARlnVL5Naqqh12a7Nf5CvK6cXTFynHQ77sY__98_kx_okn34O8sNEtiySsCUvetj8ivC08825nx9HodcvHu6dD4iFQFgRtZKtumVfQ1wFtf0aQCbb2OF4CNKGvmRlyO2FxBcWxP1_tBNkQnyCE6Gj8bL6q4p4uNH8DHCQg
+
+*** Test Cases ***
+Parametres
+    create session    ma_session    ${base_url}
+    ${header}=    Create Dictionary    Authorization=${bearerToken}    Content-Type=application/json
+    ${response}=    get request    ma_session   ${endpoint}     headers=${header}
+
+    log to console    ${response.status_code}
+    log to console    ${response.content}
+    log to console    ${response.headers}
+
+

@@ -1,0 +1,20 @@
+*** Settings ***
+Library     RequestsLibrary
+Documentation    Afficher la liste des applications
+
+*** Variables ***
+${base_url}     http://sige-referentiel-service.dev.defisetstrategies.dev/api
+${endpoint}     /type-statut/1
+${bearerToken}=    Bearer   eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAwOTE2ODEsImlhdCI6MTcwMDA5MTM4MSwianRpIjoiN2ZkN2Q2MDktNTljNi00MTg0LTk1ZDctNTM1YTYwNjY4MDM1IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiZGEwMjQ1YWEtMWJmNi00ZDA1LThiNWItNzM2ODcwMzU3ZGEwIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJkYTAyNDVhYS0xYmY2LTRkMDUtOGI1Yi03MzY4NzAzNTdkYTAiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.Czg2_i0SrXNWn2f_HcTtufNssvvybLuJoSYEDSC195sm-YtyDjaMxfGtv2W-E0YNtu-Z8StKIJv1cw5h62LkmCqxWqUt6cWKpQStlwSBa3qNEAEh1h9s1y1EmB2MehIf4H8PiCpktM7SRYqTP9inqZG5H9ptrshVV6QUrb6ZJjdFUc8n8-SROUzwSKYAS4z_G9l3AhSOyeIES_yXBzagyvbxufXdExfj9c82iKBJTGCsSJfbgqunDbsUNf1YZx0Zj0Hw7D6EVmaeD8TgiJdQFN7Ji7vtajxhFcpEWlYti41MFaCm21AycGZPx0bk9tDPB1dIQZfraBt7jqS8HcJ6Wg
+
+*** Test Cases ***
+Parametres
+    create session    ma_session    ${base_url}
+    ${header}=    Create Dictionary    Authorization=${bearerToken}    Content-Type=application/json
+    ${response}=    get request    ma_session   ${endpoint}     headers=${header}
+
+    log to console    ${response.status_code}
+    log to console    ${response.content}
+    log to console    ${response.headers}
+
+

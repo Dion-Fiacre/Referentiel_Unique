@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231115 21:09:06.297" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister type matiere bac" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Type_Matiere_Series_BAC\Lister_type_matiere_bac.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231115 21:09:06.406" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231115 21:09:06.406" endtime="20231115 21:09:06.406"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231115 21:09:06.406" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAwNzkxNDYsImlhdCI6MTcwMDA3ODg0NiwianRpIjoiNGEwNz...</msg>
+<status status="PASS" starttime="20231115 21:09:06.406" endtime="20231115 21:09:06.406"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231115 21:09:06.406" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231115 21:09:07.003" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-matieres-series-bac 
+ path_url=/api/type-matieres-series-bac 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAwNzkxNDYsImlhdCI6MTcwMDA3ODg0NiwianRpIjoiNGEwNzIzOWItZDlhZC00YWYwLWI4YWMtOTEzYzU4YmE2NjQxIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiYjlmNjFlZWUtNjhkOC00YWFmLTgwZjctYTZmNWFiYzQ0ZmJiIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJiOWY2MWVlZS02OGQ4LTRhYWYtODBmNy1hNmY1YWJjNDRmYmIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.eU2p7tKyoDNcxBgP-2aXp0Jl2AA5m7e2ZddnOajaefb5oPvHVLyAr8eurzK25T4uEAYLs514GSB90BK7u2HR72ByTSWOnTaKi0nbhnM-mBrZ-44R7qzUQS0qxo9exZ1vV6nqacJjC6p59daNKJoTGytVa2Jh_uucdYfLmPNI3D6_XOZJh0B8d-XbpNBpznYpFBs160Kw-1CbbBPG6GEF_qlpoXan_nlLElOmFha2GwuGoUV2fNF10VGFR4yDPe7cVUwDHVWZ-bprKzzXdi9vPan4HIlu7ulbHtlt1OWFznlvA3IgkWD6uPBDdEfCYaRrBQy6TNbNvgAVtfvCj5CmCg', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231115 21:09:07.019" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-matieres-series-bac 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Wed, 15 Nov 2023 20:09:07 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "_embedded" : {
+    "typematiereseriesbac" : [ ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-matieres-series-bac"
+    },
+    "profile" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-matieres-series-bac"
+    }
+  }
+} 
+ </msg>
+<msg timestamp="20231115 21:09:07.019" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231115 21:09:06.406" endtime="20231115 21:09:07.019"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231115 21:09:07.019" endtime="20231115 21:09:07.019"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231115 21:09:07.019" endtime="20231115 21:09:07.019"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231115 21:09:07.027" endtime="20231115 21:09:07.027"/>
+</kw>
+<status status="PASS" starttime="20231115 21:09:06.406" endtime="20231115 21:09:07.027"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231115 21:09:06.299" endtime="20231115 21:09:07.027"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister type matiere bac">Lister type matiere bac</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231115 21:09:06.406" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

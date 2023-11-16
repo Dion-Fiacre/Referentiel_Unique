@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231116 02:17:32.838" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister type violences" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Type_Violences\Lister_type_violences.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231116 02:17:32.940" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231116 02:17:32.940" endtime="20231116 02:17:32.940"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231116 02:17:32.941" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAwOTc3MzQsImlhdCI6MTcwMDA5NzQzNCwianRpIjoiZjk1MD...</msg>
+<status status="PASS" starttime="20231116 02:17:32.941" endtime="20231116 02:17:32.941"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231116 02:17:32.942" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231116 02:17:35.712" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences 
+ path_url=/api/type-violences 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAwOTc3MzQsImlhdCI6MTcwMDA5NzQzNCwianRpIjoiZjk1MDEzZGQtNDEzNy00ZGRlLWJiYjUtYmM4MjVlY2FhNzYyIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiYjhiZDZlNGYtYWUwMS00ZTM1LThjZjItODUzOTE1ZDZiMTNjIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJiOGJkNmU0Zi1hZTAxLTRlMzUtOGNmMi04NTM5MTVkNmIxM2MiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.dV4iG6bjGW9loRLq12GTNI5txIzEofbzozfrdHF_tZKIt6lpXbflUxpmKY-Txd_SQsgKd7FqXJ8oahLHBDtYlMA0WrG1hVR897yJdnZqJob3LTLlOx-ySHwgIVTKd1IlOjP1crMolkJ4BvyhF05ejTAv-6ugd3wVxowj010LBoOeTxaCCvtVeAbIovNAoDnWSs3jslIXZhxbHhZBHUhD_aNS7ikbwgiAPlU6R_bSuyDoQ5fa1kTcjPGpCt8Qeoui51ZJ-ljWG8bxUj8Gq8Zd33xGZpsnbxnFuUMr5lbg_GyovvbbXrZGhiLO1T3qjRGHdv3EJb1BmkvAzoCDqhMWUA', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231116 02:17:35.737" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Thu, 16 Nov 2023 01:17:36 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "_embedded" : {
+    "typeviolence" : [ {
+      "code" : "11",
+      "libelle" : "Coups et blessures",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/1"
+        },
+        "typeViolence" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/1"
+        }
+      }
+    }, {
+      "code" : "12",
+      "libelle" : "Bastonnades",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/2"
+        },
+        "typeViolence" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/2"
+        }
+      }
+    }, {
+      "code" : "13",
+      "libelle" : "Corvées",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/3"
+        },
+        "typeViolence" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/3"
+        }
+      }
+    }, {
+      "code" : "21",
+      "libelle" : "Viols",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/4"
+        },
+        "typeViolence" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/4"
+        }
+      }
+    }, {
+      "code" : "22",
+      "libelle" : "Harcèlements sexuels",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/5"
+        },
+        "typeViolence" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/5"
+        }
+      }
+    }, {
+      "code" : "23",
+      "libelle" : "Attouchements",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/6"
+        },
+        "typeViolence" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/6"
+        }
+      }
+    }, {
+      "code" : "24",
+      "libelle" : "Mutilations génitales féminines",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/7"
+        },
+        "typeViolence" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/7"
+        }
+      }
+    }, {
+      "code" : "31",
+      "libelle" : "Mariages forcés",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/8"
+        },
+        "typeViolence" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/8"
+        }
+      }
+    }, {
+      "code" : "32",
+      "libelle" : "Propos insultants ou humiliants",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/9"
+        },
+        "typeViolence" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/9"
+        }
+      }
+    }, {
+      "code" : "33",
+      "libelle" : "Intimidation/ Menaces / Chantage",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/10"
+        },
+        "typeViolence" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/10"
+        }
+      }
+    }, {
+      "code" : "34",
+      "libelle" : "Autres",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/11"
+        },
+        "typeViolence" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences/11"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-violences"
+    },
+    "profile" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-violences"
+    }
+  }
+} 
+ </msg>
+<msg timestamp="20231116 02:17:35.737" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231116 02:17:32.942" endtime="20231116 02:17:35.737"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 02:17:35.738" endtime="20231116 02:17:35.739"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 02:17:35.740" endtime="20231116 02:17:35.742"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 02:17:35.743" endtime="20231116 02:17:35.744"/>
+</kw>
+<status status="PASS" starttime="20231116 02:17:32.939" endtime="20231116 02:17:35.745"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231116 02:17:32.840" endtime="20231116 02:17:35.747"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister type violences">Lister type violences</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231116 02:17:32.942" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

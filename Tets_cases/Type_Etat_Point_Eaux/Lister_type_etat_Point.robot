@@ -1,0 +1,20 @@
+*** Settings ***
+Library     RequestsLibrary
+Documentation    Afficher la liste des applications
+
+*** Variables ***
+${base_url}     http://sige-referentiel-service.dev.defisetstrategies.dev/api
+${endpoint}     /type-etat-point-eaux
+${bearerToken}=    Bearer   eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAwNzgwMTgsImlhdCI6MTcwMDA3NzcxOCwianRpIjoiYzk3NjE1ZjctZDM2Yi00YmRiLWJjOTktY2E3NGE5YmM4NzFhIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiOWJjYzhjODgtZDczMy00ZWU1LWIzNTktMjViYTNjYTg0NDc4IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI5YmNjOGM4OC1kNzMzLTRlZTUtYjM1OS0yNWJhM2NhODQ0NzgiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.nfjD84jrr0X8N6gVXXy9tfWX4Lp8b5LFEdoCW_86r7zQ4VHeWX4v3OcRVeBN2XEp3RjyDlVT1nN1CtP1SKU6PF27PNUk99_BhRZDyDV_zMxNFI166OBL0PJf-OiD2-kxToNV1WwD_S2EPeJi4viQOOVMxFzsQyKrZ4qXunQxwGc_vRbDraZZAyQyA4_uv2P24heZBBEZTH5IMJvlT5cWifEvkV1ioyOSXOEN8WFNWPdVDQZBuSJElmVDDPzJcMVkesTVDQ6Kze1pASiqxCAUgqhDZqqhabZb4RwJrOakRZu91Urljg287EL6bzpaC6IwcyLjovycceJyLIfNC2FsTQ
+
+*** Test Cases ***
+Parametres
+    create session    ma_session    ${base_url}
+    ${header}=    Create Dictionary    Authorization=${bearerToken}    Content-Type=application/json
+    ${response}=    get request    ma_session   ${endpoint}     headers=${header}
+
+    log to console    ${response.status_code}
+    log to console    ${response.content}
+    log to console    ${response.headers}
+
+
