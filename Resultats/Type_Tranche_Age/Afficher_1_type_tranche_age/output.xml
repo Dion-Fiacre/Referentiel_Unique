@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231116 16:51:07.774" rpa="false" schemaversion="4">
+<suite id="s1" name="Afficher 1 type tranche age" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Type_Tranche_Age\Afficher_1_type_tranche_age.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231116 16:51:07.876" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231116 16:51:07.875" endtime="20231116 16:51:07.876"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231116 16:51:07.877" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAxNTAxMzYsImlhdCI6MTcwMDE0OTgzNiwianRpIjoiZTFjM2...</msg>
+<status status="PASS" starttime="20231116 16:51:07.876" endtime="20231116 16:51:07.877"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231116 16:51:07.877" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231116 16:51:08.235" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/2 
+ path_url=/api/type-tranche-age-eleves/2 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAxNTAxMzYsImlhdCI6MTcwMDE0OTgzNiwianRpIjoiZTFjM2U4MTctYmYxNy00OTJkLWJhYmMtNGU4MTEzNDFhNzhiIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiZDM3NzYwY2QtMzM1ZC00YWQxLTlhNGUtODdjMWI0MTE0OTY4IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJkMzc3NjBjZC0zMzVkLTRhZDEtOWE0ZS04N2MxYjQxMTQ5NjgiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.daM_QryEPA3gVGk38Ic3_FYu6K96_Y4XpJvWu8A9cMSCG0l0cjQltd2XLQDVAH3Tz4ZGFEpEjrP9wXddXzt9E4BhqR8AmPyQNkdDDiDXFAESZVZ_l3DMhrFxjEM14qC4u4hHrXTzAvl99Dq0_nZ-plroj-8xu4RHoJhB0qA2F_zTEo_AXw52kIIY5aedNn6SzFChmadC_6wyQv5vZb9UfC3et0BpvWGOhu-ePkpsKzm1iCQgd5MkIdYZ-U25PB8tTl8LdvOcWTq6IzCFH6KFMGOATh9-mHF8EMHA17--DE60qaNHFigLlLoFV9WFVG2Wi3UY4I5nafekUV_jsTW10g', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231116 16:51:08.239" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/2 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Thu, 16 Nov 2023 15:51:08 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "code" : "2",
+  "libelle" : "6 ans",
+  "description" : null,
+  "dateDebut" : "2023-11-12",
+  "dateFin" : null,
+  "isdelete" : false,
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/2"
+    },
+    "typeTrancheAgeEleve" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/2"
+    },
+    "idCycleEnseignement" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/2/idCycleEnseignement"
+    }
+  }
+} 
+ </msg>
+<msg timestamp="20231116 16:51:08.239" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231116 16:51:07.877" endtime="20231116 16:51:08.239"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 16:51:08.240" endtime="20231116 16:51:08.241"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 16:51:08.241" endtime="20231116 16:51:08.242"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 16:51:08.242" endtime="20231116 16:51:08.243"/>
+</kw>
+<status status="PASS" starttime="20231116 16:51:07.875" endtime="20231116 16:51:08.244"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231116 16:51:07.776" endtime="20231116 16:51:08.245"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Afficher 1 type tranche age">Afficher 1 type tranche age</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231116 16:51:07.877" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

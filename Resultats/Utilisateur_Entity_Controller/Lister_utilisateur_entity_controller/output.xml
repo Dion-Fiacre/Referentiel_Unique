@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231116 16:30:55.888" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister utilisateur entity controller" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Utilisateur_Entity_Controller\Lister_utilisateur_entity_controller.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231116 16:30:55.983" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231116 16:30:55.983" endtime="20231116 16:30:55.983"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231116 16:30:55.984" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAxNDg5NDYsImlhdCI6MTcwMDE0ODY0NiwianRpIjoiMzZhM2...</msg>
+<status status="PASS" starttime="20231116 16:30:55.984" endtime="20231116 16:30:55.984"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231116 16:30:55.984" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231116 16:30:56.260" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/utilisateurs 
+ path_url=/api/utilisateurs 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAxNDg5NDYsImlhdCI6MTcwMDE0ODY0NiwianRpIjoiMzZhM2UxMmMtMDJjNy00YjUxLWJhYjQtMThkMTY1YjYwY2YzIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiYjM3M2YwNWQtMDk5YS00OGQ3LTg2ZGYtNTBmMThjNDliNzljIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJiMzczZjA1ZC0wOTlhLTQ4ZDctODZkZi01MGYxOGM0OWI3OWMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.fdwSSGCrRevJHLVkeVfQDFckG2a49OTqjOHxhRzYI2mYJNyoQV3zYCent97p6a83TK-SY6regoWVSsmHuUAA1eTxH9wjpRqnJ9blYrwsxAUVf2KFUVBL_WmuvOTPjd8HUu08xnrqmCwuO6RHYtBjn6RQ3avmEkrJyZBZlQwybsgxj-Uoqn5XqbPyAL75gs9DbJrov7Es43Oj3XZlqPeSh1zyAvVNK0pKgnxtm4ZQYoa0KbsOSlF9DMpbEtqJhAxDvV0FRkmR6GWHwgdyvh-1ihQitlGCLoyFgunW3snMm9ynfnayppj_pu3kzPq4U5P5DDprrje3ujak2eaKNcIpWw', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231116 16:30:56.270" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/utilisateurs 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Thu, 16 Nov 2023 15:30:56 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "_embedded" : {
+    "utilisateurs" : [ {
+      "uid" : "string",
+      "direction" : "string",
+      "sdirection" : "string",
+      "dren" : "string",
+      "iep" : "string",
+      "etablissement" : "string",
+      "firstName" : "string",
+      "lastName" : "string",
+      "userName" : "string",
+      "fullName" : "string",
+      "commonName" : "string",
+      "email" : "string",
+      "groupe" : "string",
+      "departmentNumber" : 0,
+      "matricule" : "string",
+      "phone" : [ "string" ],
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/utilisateurs/2"
+        },
+        "utilisateur" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/utilisateurs/2"
+        }
+      }
+    }, {
+      "uid" : "texte",
+      "direction" : "texte",
+      "sdirection" : "texte",
+      "dren" : "texte",
+      "iep" : "texte",
+      "etablissement" : "texte",
+      "firstName" : "texte",
+      "lastName" : "texte",
+      "userName" : "texte",
+      "fullName" : "texte",
+      "commonName" : "texte",
+      "email" : "texte",
+      "groupe" : "texte",
+      "departmentNumber" : 0,
+      "matricule" : "texte",
+      "phone" : [ "texte" ],
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/utilisateurs/3"
+        },
+        "utilisateur" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/utilisateurs/3"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/utilisateurs?page=0&amp;size=20"
+    },
+    "profile" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/utilisateurs"
+    }
+  },
+  "page" : {
+    "size" : 20,
+    "totalElements" : 2,
+    "totalPages" : 1,
+    "number" : 0
+  }
+} 
+ </msg>
+<msg timestamp="20231116 16:30:56.270" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231116 16:30:55.984" endtime="20231116 16:30:56.270"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 16:30:56.271" endtime="20231116 16:30:56.273"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 16:30:56.273" endtime="20231116 16:30:56.275"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 16:30:56.275" endtime="20231116 16:30:56.277"/>
+</kw>
+<status status="PASS" starttime="20231116 16:30:55.982" endtime="20231116 16:30:56.277"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231116 16:30:55.890" endtime="20231116 16:30:56.279"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister utilisateur entity controller">Lister utilisateur entity controller</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231116 16:30:55.984" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

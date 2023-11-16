@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231116 15:05:14.290" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister type ordre enseignats" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Type_Ordres_Enseignants\Lister_type_ordre_enseignats.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231116 15:05:14.416" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231116 15:05:14.416" endtime="20231116 15:05:14.416"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231116 15:05:14.418" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAxNDM4MDQsImlhdCI6MTcwMDE0MzUwNCwianRpIjoiODI3NT...</msg>
+<status status="PASS" starttime="20231116 15:05:14.418" endtime="20231116 15:05:14.418"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231116 15:05:14.418" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231116 15:05:14.926" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-ordre-enseignements 
+ path_url=/api/type-ordre-enseignements 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAxNDM4MDQsImlhdCI6MTcwMDE0MzUwNCwianRpIjoiODI3NTUyMTQtMGE4Yy00M2U2LWFkZDEtNDc0N2YyYWNiMGQwIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiNDcxODY1ZmQtYTJlYy00ZTQ5LTk2MjItYzYwZjM1ZDcyZmRlIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI0NzE4NjVmZC1hMmVjLTRlNDktOTYyMi1jNjBmMzVkNzJmZGUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.m7s_B59-Dsd7lWUdXyzD1WhriAUmRa3P0dYiYdKZhbG4O9RIne0AHgTq7CGX1uSELZ3vf5R7BubKCdrPQMuZSfIthdisgHOScrcgXD2dUCtVe8gC8sO-sdgkRujxiJhxDIkoUvTD9Y_lC2B1wsiitAB3WArdLJ9QeFNvLEM8mrY8PRrveOPR-sUV5Wi8RL71LLqlmiPcNoWPcL-1xJdk0zB1QAYs8CzN3q5FWMcSvZ_2ML1ztoyEi_sf3q67xRPGxu4s6f1194XB0bbnwleolNBdrLhr7bpqC1aCmPTk8z3cEc7NU4sKSPe3slaj_mWXeVNwEGYCBc0-aT0LYbHsrQ', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231116 15:05:14.938" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-ordre-enseignements 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Thu, 16 Nov 2023 14:05:15 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "_embedded" : {
+    "typeordreenseignement" : [ {
+      "code" : "1",
+      "libelle" : "Privé Laïc",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-ordre-enseignements/1"
+        },
+        "typeOrdreEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-ordre-enseignements/1"
+        }
+      }
+    }, {
+      "code" : "2",
+      "libelle" : "Privé confessionnel",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-ordre-enseignements/2"
+        },
+        "typeOrdreEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-ordre-enseignements/2"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-ordre-enseignements"
+    },
+    "profile" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-ordre-enseignements"
+    }
+  }
+} 
+ </msg>
+<msg timestamp="20231116 15:05:14.938" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231116 15:05:14.418" endtime="20231116 15:05:14.938"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 15:05:14.938" endtime="20231116 15:05:14.938"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 15:05:14.938" endtime="20231116 15:05:14.938"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 15:05:14.938" endtime="20231116 15:05:14.946"/>
+</kw>
+<status status="PASS" starttime="20231116 15:05:14.416" endtime="20231116 15:05:14.946"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231116 15:05:14.298" endtime="20231116 15:05:14.948"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister type ordre enseignats">Lister type ordre enseignats</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231116 15:05:14.418" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

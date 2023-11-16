@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231116 16:48:18.343" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister type tranche age" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Type_Tranche_Age\Lister_type_tranche_age.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231116 16:48:18.437" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231116 16:48:18.437" endtime="20231116 16:48:18.437"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231116 16:48:18.438" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAxNDk5ODMsImlhdCI6MTcwMDE0OTY4MywianRpIjoiODViYm...</msg>
+<status status="PASS" starttime="20231116 16:48:18.438" endtime="20231116 16:48:18.438"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231116 16:48:18.439" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231116 16:48:18.812" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves 
+ path_url=/api/type-tranche-age-eleves 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAxNDk5ODMsImlhdCI6MTcwMDE0OTY4MywianRpIjoiODViYmZmNjYtN2VkZi00MTUxLWI0Y2UtZGMyNzg4M2JjOTA5IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiZmUzZTg5YmQtMmU4YS00ZjA3LWJhYzUtNDU4MTU4MDI2NGI0IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJmZTNlODliZC0yZThhLTRmMDctYmFjNS00NTgxNTgwMjY0YjQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.VxwtVEVeEu7y8fYAvSZjnL-OmQxuK9AFf6s0PQNakOdBfwS56_LICYvbEML17jOQAlgY9QlaQY0kWAdI-mz9cnO4WCtjDjjz0SFQ-e0k6uZO23W8aRo7SSXwh54SMkWiYn95aizjblgzaFyaEdjC53LU-PRpo0CspZXWaZ2HXt0_JOmXvYXOYD_UUH279-znHWxxZ7eqhHOTBzPhJLvyshUj4GnXwh6TmsFKJENfwNKZsGQHvqRJoM-9ar_JGavq_gTp4lYleoe7Wv91B7qa887sM33LpLDQ8MNMaHIyH_xcLz1Hjpq27QNSUXyxJ_SALYYFcXk-M3IVdkAWPDZZTA', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231116 16:48:18.817" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Thu, 16 Nov 2023 15:48:19 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "_embedded" : {
+    "typetrancheageeleve" : [ {
+      "code" : "2",
+      "libelle" : "6 ans",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/2"
+        },
+        "typeTrancheAgeEleve" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/2"
+        },
+        "idCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/2/idCycleEnseignement"
+        }
+      }
+    }, {
+      "code" : "3",
+      "libelle" : "7 ans",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/3"
+        },
+        "typeTrancheAgeEleve" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/3"
+        },
+        "idCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/3/idCycleEnseignement"
+        }
+      }
+    }, {
+      "code" : "4",
+      "libelle" : "8 ans",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/4"
+        },
+        "typeTrancheAgeEleve" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/4"
+        },
+        "idCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/4/idCycleEnseignement"
+        }
+      }
+    }, {
+      "code" : "5",
+      "libelle" : "9 ans",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/5"
+        },
+        "typeTrancheAgeEleve" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/5"
+        },
+        "idCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/5/idCycleEnseignement"
+        }
+      }
+    }, {
+      "code" : "6",
+      "libelle" : "10 ans",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/6"
+        },
+        "typeTrancheAgeEleve" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/6"
+        },
+        "idCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/6/idCycleEnseignement"
+        }
+      }
+    }, {
+      "code" : "7",
+      "libelle" : "11 ans",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/7"
+        },
+        "typeTrancheAgeEleve" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/7"
+        },
+        "idCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/7/idCycleEnseignement"
+        }
+      }
+    }, {
+      "code" : "8",
+      "libelle" : "12 ans",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/8"
+        },
+        "typeTrancheAgeEleve" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/8"
+        },
+        "idCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/8/idCycleEnseignement"
+        }
+      }
+    }, {
+      "code" : "9",
+      "libelle" : "13 ans",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/9"
+        },
+        "typeTrancheAgeEleve" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/9"
+        },
+        "idCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/9/idCycleEnseignement"
+        }
+      }
+    }, {
+      "code" : "10",
+      "libelle" : "14 ans",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/10"
+        },
+        "typeTrancheAgeEleve" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/10"
+        },
+        "idCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/10/idCycleEnseignement"
+        }
+      }
+    }, {
+      "code" : "11",
+      "libelle" : "15 ans",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/11"
+        },
+        "typeTrancheAgeEleve" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/11"
+        },
+        "idCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/11/idCycleEnseignement"
+        }
+      }
+    }, {
+      "code" : "12",
+      "libelle" : "16 ans",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/12"
+        },
+        "typeTrancheAgeEleve" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/12"
+        },
+        "idCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/12/idCycleEnseignement"
+        }
+      }
+    }, {
+      "code" : "13",
+      "libelle" : "17 ans et plus",
+      "description" : null,
+      "dateDebut" : "2023-11-12",
+      "dateFin" : null,
+      "isdelete" : false,
+      "_links" : {
+        "self" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/13"
+        },
+        "typeTrancheAgeEleve" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/13"
+        },
+        "idCycleEnseignement" : {
+          "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves/13/idCycleEnseignement"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/type-tranche-age-eleves"
+    },
+    "profile" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-tranche-age-eleves"
+    }
+  }
+} 
+ </msg>
+<msg timestamp="20231116 16:48:18.818" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231116 16:48:18.439" endtime="20231116 16:48:18.818"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 16:48:18.818" endtime="20231116 16:48:18.819"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 16:48:18.820" endtime="20231116 16:48:18.823"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 16:48:18.823" endtime="20231116 16:48:18.824"/>
+</kw>
+<status status="PASS" starttime="20231116 16:48:18.437" endtime="20231116 16:48:18.825"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231116 16:48:18.345" endtime="20231116 16:48:18.825"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister type tranche age">Lister type tranche age</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231116 16:48:18.439" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>
