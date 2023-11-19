@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231116 17:22:47.295" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister profile" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Profile_Controller\Lister_profile.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231116 17:22:47.499" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231116 17:22:47.499" endtime="20231116 17:22:47.499"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231116 17:22:47.500" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAxNTE5MTAsImlhdCI6MTcwMDE1MTYxMCwianRpIjoiNWUxND...</msg>
+<status status="PASS" starttime="20231116 17:22:47.500" endtime="20231116 17:22:47.500"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231116 17:22:47.501" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231116 17:22:47.989" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile 
+ path_url=/api/profile 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAxNTE5MTAsImlhdCI6MTcwMDE1MTYxMCwianRpIjoiNWUxNDI4MjItZDQzYi00ZWMzLThmNDQtN2QzYTQ2NTY3OGNiIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiYzE5ZWM4MWItMmRkYS00OTEzLTk4OWEtMzQ0NDhkNjE3M2RlIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJjMTllYzgxYi0yZGRhLTQ5MTMtOTg5YS0zNDQ0OGQ2MTczZGUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.GP9RKVwUeG23kFVEfqChUnwWol06XKnMxo3IphmmP6LgvXCte-O3yRLRfCToo5XlTaVKwigLsgC-qDgHa1-R6G0hZkUu3ohWPk3QVcBzPQeEH97OBLi7W84LxlZybYY2ygg5orFV5TvXdOqWUMfeSjB29h2OV-7i8Lg2FiWePz6gnLS_cre13Pv_ZE8HA1-jUKeMiwFXdSICUNyX5yYVqtqfQbvf_u8BuUNxx0PR3ijPH4zMjqMv6A158mYIZBjb6Zj7Ivp-_00tf3Sd3eGunpZD2IQmmncvInWZpCUui1iQaxbGlnjfmCuZGu47d_W2rXtl-fOOiv-wQWvYn4lHGg', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231116 17:22:48.003" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/hal+json', 'Date': 'Thu, 16 Nov 2023 16:22:48 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "_links" : {
+    "self" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile"
+    },
+    "typeexamen" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-examens"
+    },
+    "typematiereseriesbac" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-matieres-series-bac"
+    },
+    "typepointeaux" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-point-eaux"
+    },
+    "typegenreeleve" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-genre-eleves"
+    },
+    "typecodificationunifieecandidat" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-codification-unifie-candidats"
+    },
+    "typecommune" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-communes"
+    },
+    "typemilieuetablissement" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-milieu-etablissements"
+    },
+    "typeactivites" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-activites"
+    },
+    "typedispositifbesoinspecifique" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-dispositif-besoin-specifiques"
+    },
+    "typethemeformation" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-theme-formations"
+    },
+    "typedisciplineenseignee" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-discipline-enseignee"
+    },
+    "typestatutetablissement" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-statut-etablissements"
+    },
+    "typedegrehandicap" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-degre-handicaps"
+    },
+    "typelocalite" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-localites"
+    },
+    "typemanuelassainhygiene" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-manuel-assain-hygiene"
+    },
+    "typeetatpointeaux" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-etat-point-eaux"
+    },
+    "typeserie" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-series"
+    },
+    "typeequipementdictatique" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-equipement-didactiques"
+    },
+    "typeniveauscolaire" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-niveau-scolaires"
+    },
+    "typeclubscolaire" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-club-scolaires"
+    },
+    "typetrancheageeleve" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-tranche-age-eleves"
+    },
+    "typesituationparent" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-situation-parents"
+    },
+    "typeviolence" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-violences"
+    },
+    "typecritereinspection" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-critere-inspections"
+    },
+    "typebaseetablissement" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-base-etablissements"
+    },
+    "typeinternat" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-internats"
+    },
+    "typediplomepedagogique" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-diplome-pedagogiques"
+    },
+    "typeauteurgrossesse" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-auteur-grossesses"
+    },
+    "typestatut" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-statut"
+    },
+    "typeconnexioninternet" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-connexion-internets"
+    },
+    "typestatistique" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-statistiques"
+    },
+    "typecategorieviolence" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-categorie-violences"
+    },
+    "typenaturetoiletteeleve" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-nature-toilette-eleves"
+    },
+    "typemecanismelutteviolence" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-mecanisme-luttes-violences"
+    },
+    "typecoordonneesbancaire" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-coordonnees-bancaire"
+    },
+    "typefonctionnementclasse" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-fonctionnement-classes"
+    },
+    "typeregion" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-regions"
+    },
+    "typegenre" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-genres"
+    },
+    "typecycleenvironnement" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-cycle-enseignements"
+    },
+    "typeordreenseignement" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-ordre-enseignements"
+    },
+    "typeevaluationfinalebepc" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-evaluation-finale-bepc"
+    },
+    "typeactivitescooperative" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-activite-cooperatives"
+    },
+    "typeantecedentmedical" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-antecedent-medicals"
+    },
+    "typeinfrastructuresportive" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-infrastructure-sportives"
+    },
+    "typefonction" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-fonctions"
+    },
+    "typeregimeetablissement" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-regime-etablissements"
+    },
+    "typegrade" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-grades"
+    },
+    "typemecanismereduction" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-mecanismes-reductions"
+    },
+    "typeinspection" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-inspections"
+    },
+    "typeespace" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-espaces"
+    },
+    "typestatutevaluation" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-statut-evaluations"
+    },
+    "typeevaluation" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-evaluations"
+    },
+    "typenaturecloture" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-nature-clotures"
+    },
+    "typestatutmatrimonial" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-statut-matrimoniaux"
+    },
+    "typedistanceresidence" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-distance-residences"
+    },
+    "typedonneesconjointenfant" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-donnees-conjoint-enfants"
+    },
+    "utilisateurs" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/utilisateurs"
+    },
+    "typesituationemploi" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-situation-emploi"
+    },
+    "typebac" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-bacs"
+    },
+    "typematiereenseignee" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-matieres-enseignees"
+    },
+    "typeconfession" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-confessions"
+    },
+    "typeetatespace" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-etat-espaces"
+    },
+    "typeconsequencecrise" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-consequences-crises"
+    },
+    "typeddna" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-ddna"
+    },
+    "typeevaluationfinalecepe" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-evaluation-finale-cepe"
+    },
+    "typeprofession" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-professions"
+    },
+    "typedepartement" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-departaments"
+    },
+    "typevaccination" : {
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-vaccinations"
+    },
+    "typeorphelin" : {
+      "href" : "http://... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20231116 17:22:48.004" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231116 17:22:47.501" endtime="20231116 17:22:48.004"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 17:22:48.004" endtime="20231116 17:22:48.005"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 17:22:48.005" endtime="20231116 17:22:48.020"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 17:22:48.021" endtime="20231116 17:22:48.022"/>
+</kw>
+<status status="PASS" starttime="20231116 17:22:47.498" endtime="20231116 17:22:48.022"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231116 17:22:47.298" endtime="20231116 17:22:48.023"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister profile">Lister profile</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231116 17:22:47.501" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

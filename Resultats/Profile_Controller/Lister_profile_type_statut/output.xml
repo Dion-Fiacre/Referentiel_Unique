@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231119 17:08:15.183" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister profile type statut" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Profile_Controller\Lister_profile_type_statut.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231119 17:08:15.295" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231119 17:08:15.294" endtime="20231119 17:08:15.295"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231119 17:08:15.297" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDA0MTAzNDEsImlhdCI6MTcwMDQxMDA0MSwianRpIjoiYjYxND...</msg>
+<status status="PASS" starttime="20231119 17:08:15.296" endtime="20231119 17:08:15.297"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231119 17:08:15.297" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231119 17:08:15.802" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-statut 
+ path_url=/api/profile/type-statut 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDA0MTAzNDEsImlhdCI6MTcwMDQxMDA0MSwianRpIjoiYjYxNDQxYjYtOWE4Ni00Zjc0LWE0NzktM2RjNjQ5Zjk3YWE3IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiYWY1YjgxNjctN2RlZC00OWI3LTg2NmQtN2FhYzJmNDQyZjQ1IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJhZjViODE2Ny03ZGVkLTQ5YjctODY2ZC03YWFjMmY0NDJmNDUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.shkX6aOZIe5cGYxncurlzbEn-awmGnmytR4TkN9SyZH2hDMQQwwvNxivetmE1XYBa-lf8YaBTqms720RKXNyBWIGdzTVF4s803La0ZwR5gi1AYeV40Efj-3lAZpVLkqrXUxVFW7jy4ebdLx-k6QqIhzjAQiXTy9buJeyCbKNNXcps_jAONWcUov8VZdLOBlcmvbql-eLoaDf3FSLxTOEt1m8DS_BIBkWBKV1Pnad2b_UnboIjqwfOR5PnTcdP_wu-5zmXj5l8nfeYAxuC9KCg0l6eE-8QIfy3z4cOhOeTTwzmmfkH2OuztS0ssbZdVUHRD_6T31TYhqRMmzDF16JCA', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231119 17:08:15.817" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-statut 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/alps+json', 'Date': 'Sun, 19 Nov 2023 16:08:13 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "alps" : {
+    "version" : "1.0",
+    "descriptor" : [ {
+      "id" : "typeStatut-representation",
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-statut",
+      "descriptor" : [ {
+        "name" : "code",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "libelle",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "description",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateDebut",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateFin",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "isdelete",
+        "type" : "SEMANTIC"
+      } ]
+    }, {
+      "id" : "create-typestatut",
+      "name" : "typestatut",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeStatut-representation"
+    }, {
+      "id" : "get-typestatut",
+      "name" : "typestatut",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeStatut-representation"
+    }, {
+      "id" : "delete-typeStatut",
+      "name" : "typeStatut",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeStatut-representation"
+    }, {
+      "id" : "get-typeStatut",
+      "name" : "typeStatut",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeStatut-representation"
+    }, {
+      "id" : "update-typeStatut",
+      "name" : "typeStatut",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeStatut-representation"
+    }, {
+      "id" : "patch-typeStatut",
+      "name" : "typeStatut",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeStatut-representation"
+    } ]
+  }
+} 
+ </msg>
+<msg timestamp="20231119 17:08:15.817" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231119 17:08:15.297" endtime="20231119 17:08:15.817"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 17:08:15.818" endtime="20231119 17:08:15.819"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 17:08:15.819" endtime="20231119 17:08:15.821"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 17:08:15.821" endtime="20231119 17:08:15.822"/>
+</kw>
+<status status="PASS" starttime="20231119 17:08:15.294" endtime="20231119 17:08:15.822"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231119 17:08:15.186" endtime="20231119 17:08:15.824"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister profile type statut">Lister profile type statut</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231119 17:08:15.297" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

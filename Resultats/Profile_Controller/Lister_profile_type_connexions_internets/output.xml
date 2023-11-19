@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231116 18:49:45.376" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister profile type connexion internets" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Profile_Controller\Lister_profile_type_connexion_internets.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231116 18:49:45.473" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231116 18:49:45.473" endtime="20231116 18:49:45.473"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231116 18:49:45.473" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAxNTcyNzIsImlhdCI6MTcwMDE1Njk3MiwianRpIjoiMDA0N2...</msg>
+<status status="PASS" starttime="20231116 18:49:45.473" endtime="20231116 18:49:45.473"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231116 18:49:45.473" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231116 18:49:45.993" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-connexion-internets 
+ path_url=/api/profile/type-connexion-internets 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAxNTcyNzIsImlhdCI6MTcwMDE1Njk3MiwianRpIjoiMDA0N2RlOGItZTliZS00YWMwLTllZWItMGFiMmY4YmFiM2RmIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiYjlmYjE4MGYtYzRjYS00NDBhLThkZGUtMjU0ODQ4NTBhODI3IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJiOWZiMTgwZi1jNGNhLTQ0MGEtOGRkZS0yNTQ4NDg1MGE4MjciLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.tiabk7NISVmdh5U7FxX2v8W3UUqUibiLqiDjizfG69wqaltqzNetbzI7TFQkQ9ki5fKQ5QzDwjgO7KIylKxPbjM-jxwnhT90yVIagHBn-VPrTzPq9eEgPmmGq6aTZlo5Kql2N1M2hFLguHrG6oZVq3fitC0IhN3s-0jzQJyHp5S7Haotc7o-9Q4VA1dsb7csime7trRggIetdkMOIbRmIoUKo4pSuPi4YImbOMpFUqynoytTdGvhrWoFAnFkRyF3Vs6yZXIImAXSazm-ejXblOExMozH4SWxNcJWDKctOMyhbq5wKsdXacu85u29CsGlbvNykZ46NqdlsPXYYwnc2g', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231116 18:49:46.001" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-connexion-internets 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/alps+json', 'Date': 'Thu, 16 Nov 2023 17:49:46 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "alps" : {
+    "version" : "1.0",
+    "descriptor" : [ {
+      "id" : "typeConnexionInternet-representation",
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-connexion-internets",
+      "descriptor" : [ {
+        "name" : "code",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "libelle",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "description",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateDebut",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateFin",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "isdelete",
+        "type" : "SEMANTIC"
+      } ]
+    }, {
+      "id" : "create-typeconnexioninternet",
+      "name" : "typeconnexioninternet",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeConnexionInternet-representation"
+    }, {
+      "id" : "get-typeconnexioninternet",
+      "name" : "typeconnexioninternet",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeConnexionInternet-representation"
+    }, {
+      "id" : "delete-typeConnexionInternet",
+      "name" : "typeConnexionInternet",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeConnexionInternet-representation"
+    }, {
+      "id" : "get-typeConnexionInternet",
+      "name" : "typeConnexionInternet",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeConnexionInternet-representation"
+    }, {
+      "id" : "update-typeConnexionInternet",
+      "name" : "typeConnexionInternet",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeConnexionInternet-representation"
+    }, {
+      "id" : "patch-typeConnexionInternet",
+      "name" : "typeConnexionInternet",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeConnexionInternet-representation"
+    } ]
+  }
+} 
+ </msg>
+<msg timestamp="20231116 18:49:46.001" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231116 18:49:45.473" endtime="20231116 18:49:46.001"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 18:49:46.001" endtime="20231116 18:49:46.001"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 18:49:46.009" endtime="20231116 18:49:46.010"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231116 18:49:46.010" endtime="20231116 18:49:46.010"/>
+</kw>
+<status status="PASS" starttime="20231116 18:49:45.473" endtime="20231116 18:49:46.010"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231116 18:49:45.376" endtime="20231116 18:49:46.010"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister profile type connexion internets">Lister profile type connexion internets</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231116 18:49:45.473" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

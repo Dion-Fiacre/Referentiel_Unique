@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231119 14:15:50.823" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister profile type fonctions" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Profile_Controller\Lister_profile_type_fonctions.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231119 14:15:50.921" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231119 14:15:50.921" endtime="20231119 14:15:50.922"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231119 14:15:50.922" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAzOTk5MTAsImlhdCI6MTcwMDM5OTYxMCwianRpIjoiZmFjMz...</msg>
+<status status="PASS" starttime="20231119 14:15:50.922" endtime="20231119 14:15:50.922"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231119 14:15:50.923" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231119 14:16:02.216" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001BB5BD10AD0&gt;: Failed to resolve 'sige-referentiel-service.dev.defisetstrategies.dev' ([Errno 11001] getaddrinfo failed)")': /api/profile/type-fonctions</msg>
+<msg timestamp="20231119 14:16:06.309" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-fonctions 
+ path_url=/api/profile/type-fonctions 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAzOTk5MTAsImlhdCI6MTcwMDM5OTYxMCwianRpIjoiZmFjMzg1ZGItYjYzZi00YTA5LWEzMjQtYTJhM2YzZWYzNDU0IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiMTkwY2JlYTItNDZlNy00YmUzLWFiMTAtM2Q2MmRlNDQ4YjM2IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiIxOTBjYmVhMi00NmU3LTRiZTMtYWIxMC0zZDYyZGU0NDhiMzYiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.R03LnFgcOGfVn5dHIg4gWC1sY46OAQ-J4cq7_vIwlml5eKxzn7ZLKYQ6x8Qeo7EZOrLYcnBlPIOvSGITNJNO118vEI48BFmedqUZTIphDN_iD29ukVX0Lc4GKtGTHf45MnP2phmUke8izErGQDspLqYlMGmDdHEYDaM9fma10WhxfAVS8p3roTkhYYPJLZB5uXnwb92FjtLTs_uSTxVDdJhRUtSckN0Jpl0g7wxh38-inMAHePReP9wAjKaUZloYBnrcVLMYZiGHD4ocWGTgyghNVpxzhN1f5217NzUSMj-12EHZIKlnipcs-4kx7oh5KUj5wU8ywKhD3EEsCXAYUw', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231119 14:16:06.315" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-fonctions 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/alps+json', 'Date': 'Sun, 19 Nov 2023 13:16:07 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "alps" : {
+    "version" : "1.0",
+    "descriptor" : [ {
+      "id" : "typeFonction-representation",
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-fonctions",
+      "descriptor" : [ {
+        "name" : "code",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "libelle",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "description",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateDebut",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateFin",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "isdelete",
+        "type" : "SEMANTIC"
+      } ]
+    }, {
+      "id" : "create-typefonction",
+      "name" : "typefonction",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeFonction-representation"
+    }, {
+      "id" : "get-typefonction",
+      "name" : "typefonction",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeFonction-representation"
+    }, {
+      "id" : "delete-typeFonction",
+      "name" : "typeFonction",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeFonction-representation"
+    }, {
+      "id" : "get-typeFonction",
+      "name" : "typeFonction",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeFonction-representation"
+    }, {
+      "id" : "update-typeFonction",
+      "name" : "typeFonction",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeFonction-representation"
+    }, {
+      "id" : "patch-typeFonction",
+      "name" : "typeFonction",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeFonction-representation"
+    } ]
+  }
+} 
+ </msg>
+<msg timestamp="20231119 14:16:06.315" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231119 14:15:50.923" endtime="20231119 14:16:06.315"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 14:16:06.316" endtime="20231119 14:16:06.316"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 14:16:06.317" endtime="20231119 14:16:06.318"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 14:16:06.319" endtime="20231119 14:16:06.319"/>
+</kw>
+<status status="PASS" starttime="20231119 14:15:50.921" endtime="20231119 14:16:06.320"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231119 14:15:50.826" endtime="20231119 14:16:06.322"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister profile type fonctions">Lister profile type fonctions</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231119 14:15:50.923" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231119 14:16:02.216" level="WARN">Retrying (RetryAdapter(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("&lt;urllib3.connection.HTTPConnection object at 0x000001BB5BD10AD0&gt;: Failed to resolve 'sige-referentiel-service.dev.defisetstrategies.dev' ([Errno 11001] getaddrinfo failed)")': /api/profile/type-fonctions</msg>
+</errors>
+</robot>

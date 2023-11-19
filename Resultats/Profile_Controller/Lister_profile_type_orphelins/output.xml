@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231119 15:57:21.246" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister profile type orphelins" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Profile_Controller\Lister_profile_type_orphelins.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231119 15:57:21.353" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231119 15:57:21.353" endtime="20231119 15:57:21.353"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231119 15:57:21.354" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDA0MDU5MzUsImlhdCI6MTcwMDQwNTYzNSwianRpIjoiNzZiOD...</msg>
+<status status="PASS" starttime="20231119 15:57:21.354" endtime="20231119 15:57:21.354"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231119 15:57:21.355" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231119 15:57:26.454" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-orphelins 
+ path_url=/api/profile/type-orphelins 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDA0MDU5MzUsImlhdCI6MTcwMDQwNTYzNSwianRpIjoiNzZiODE1NjMtZjQ0My00NzU2LWFmYjMtYmU3ZDVkNTRhZDRjIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiM2Q3OGYzMDktMDg2MC00NjQ5LWFmZTctOTQxZDZmYWMzOTVhIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiIzZDc4ZjMwOS0wODYwLTQ2NDktYWZlNy05NDFkNmZhYzM5NWEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.qAwUhOfV7uJdW95PyD3fSGJ0mBL0TNGfPbVY3QjsA3aPuTbSkP6Rr2ir8EvhLC2oHEQ3rIxihym6lPcbFpP00QvD2MHiE1Gth6JbNVsU9zIAN3RwPexkkoDdc2Lt-KHHF6Tyc2kUb1c_C0aUxWLwKn3NgkyND7A0y_NSlLuSgYQEKx8P_pYskOxe1ds-0PzvtTGmC1sxLWEIVlOK9_ohbd1_2DPLdWLrkrspdSJMxkBkbW5xfRz27zkkX3F_d4bJDecEe4Ayn68XQ47O6FKnNhtg_KJi46NqgraWY80Y96gT1ZGXVFwpCK6xGT3lKrXqjoLnisknIb7X_XJyWDxf9w', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231119 15:57:26.460" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-orphelins 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/alps+json', 'Date': 'Sun, 19 Nov 2023 14:57:27 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "alps" : {
+    "version" : "1.0",
+    "descriptor" : [ {
+      "id" : "typeOrphelin-representation",
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-orphelins",
+      "descriptor" : [ {
+        "name" : "code",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "libelle",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "description",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateDebut",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateFin",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "isdelete",
+        "type" : "SEMANTIC"
+      } ]
+    }, {
+      "id" : "create-typeorphelin",
+      "name" : "typeorphelin",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeOrphelin-representation"
+    }, {
+      "id" : "get-typeorphelin",
+      "name" : "typeorphelin",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeOrphelin-representation"
+    }, {
+      "id" : "delete-typeOrphelin",
+      "name" : "typeOrphelin",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeOrphelin-representation"
+    }, {
+      "id" : "get-typeOrphelin",
+      "name" : "typeOrphelin",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeOrphelin-representation"
+    }, {
+      "id" : "update-typeOrphelin",
+      "name" : "typeOrphelin",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeOrphelin-representation"
+    }, {
+      "id" : "patch-typeOrphelin",
+      "name" : "typeOrphelin",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeOrphelin-representation"
+    } ]
+  }
+} 
+ </msg>
+<msg timestamp="20231119 15:57:26.460" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231119 15:57:21.355" endtime="20231119 15:57:26.460"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 15:57:26.461" endtime="20231119 15:57:26.462"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 15:57:26.463" endtime="20231119 15:57:26.464"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 15:57:26.466" endtime="20231119 15:57:26.467"/>
+</kw>
+<status status="PASS" starttime="20231119 15:57:21.352" endtime="20231119 15:57:26.468"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231119 15:57:21.249" endtime="20231119 15:57:26.470"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister profile type orphelins">Lister profile type orphelins</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231119 15:57:21.355" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

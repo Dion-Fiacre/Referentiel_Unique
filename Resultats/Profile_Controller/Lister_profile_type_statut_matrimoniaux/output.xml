@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231119 17:14:23.688" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister profile type statut matrimoniaux" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Profile_Controller\Lister_profile_type_statut_matrimoniaux.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231119 17:14:23.794" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231119 17:14:23.793" endtime="20231119 17:14:23.794"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231119 17:14:23.794" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDA0MTA3MjcsImlhdCI6MTcwMDQxMDQyNywianRpIjoiM2I1N2...</msg>
+<status status="PASS" starttime="20231119 17:14:23.794" endtime="20231119 17:14:23.795"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231119 17:14:23.795" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231119 17:14:24.308" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-statut-matrimoniaux 
+ path_url=/api/profile/type-statut-matrimoniaux 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDA0MTA3MjcsImlhdCI6MTcwMDQxMDQyNywianRpIjoiM2I1N2FkODctMzBhZS00ODQwLTlkMDctZmEwOTZkNzVjZjIzIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiNDQ4NTcwMzAtMDQ3NS00YjViLWJhYjEtZTNjMmJlMmNiYTY3IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI0NDg1NzAzMC0wNDc1LTRiNWItYmFiMS1lM2MyYmUyY2JhNjciLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.KdkPag0JLvvOvNhIGdJdCxvo-If9V6Vs5cfc2Pht3Z3GeMcbcqMBfHrNsT--zrG-KsH7uFLNajweayBWC0j9LCprsL-5msyzIxEjzmN6NMYJZ4HnC1pGpG-PEuMRLpUtj1YI1VXCjf3NG3PGYpYS5_P5Kg3k1rdVxio2l-T64QAtLLq6dfeqdbFe9lr010enPJJe7evr6XypwrDrrj6iZFR8NB5-0pmuTNo4qn2qPYU667UDFbncRWrDeNKTpmNL-eB1iM6aXUArCP8yQ91xEkGJQLo9X3niuf9SjwelhwGOsDMRQKBhsN-uDdn7u8UA8Ol0W5mJO0q_TdtkojF8gQ', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231119 17:14:24.317" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-statut-matrimoniaux 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/alps+json', 'Date': 'Sun, 19 Nov 2023 16:14:22 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "alps" : {
+    "version" : "1.0",
+    "descriptor" : [ {
+      "id" : "typeStatutMatrimonial-representation",
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-statut-matrimoniaux",
+      "descriptor" : [ {
+        "name" : "code",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "libelle",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "description",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateDebut",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateFin",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "isdelete",
+        "type" : "SEMANTIC"
+      } ]
+    }, {
+      "id" : "create-typestatutmatrimonial",
+      "name" : "typestatutmatrimonial",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeStatutMatrimonial-representation"
+    }, {
+      "id" : "get-typestatutmatrimonial",
+      "name" : "typestatutmatrimonial",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeStatutMatrimonial-representation"
+    }, {
+      "id" : "delete-typeStatutMatrimonial",
+      "name" : "typeStatutMatrimonial",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeStatutMatrimonial-representation"
+    }, {
+      "id" : "get-typeStatutMatrimonial",
+      "name" : "typeStatutMatrimonial",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeStatutMatrimonial-representation"
+    }, {
+      "id" : "update-typeStatutMatrimonial",
+      "name" : "typeStatutMatrimonial",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeStatutMatrimonial-representation"
+    }, {
+      "id" : "patch-typeStatutMatrimonial",
+      "name" : "typeStatutMatrimonial",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeStatutMatrimonial-representation"
+    } ]
+  }
+} 
+ </msg>
+<msg timestamp="20231119 17:14:24.317" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231119 17:14:23.795" endtime="20231119 17:14:24.317"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 17:14:24.318" endtime="20231119 17:14:24.319"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 17:14:24.321" endtime="20231119 17:14:24.322"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 17:14:24.322" endtime="20231119 17:14:24.323"/>
+</kw>
+<status status="PASS" starttime="20231119 17:14:23.793" endtime="20231119 17:14:24.323"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231119 17:14:23.691" endtime="20231119 17:14:24.325"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister profile type statut matrimoniaux">Lister profile type statut matrimoniaux</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231119 17:14:23.795" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

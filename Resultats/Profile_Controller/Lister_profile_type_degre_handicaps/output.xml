@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231119 13:13:39.754" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister profile type degre handicaps" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Profile_Controller\Lister_profile_type_degre_handicaps.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231119 13:13:39.869" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231119 13:13:39.869" endtime="20231119 13:13:39.869"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231119 13:13:39.869" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAzOTYyNDEsImlhdCI6MTcwMDM5NTk0MSwianRpIjoiYmE0OT...</msg>
+<status status="PASS" starttime="20231119 13:13:39.869" endtime="20231119 13:13:39.869"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231119 13:13:39.869" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231119 13:13:44.864" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-degre-handicaps 
+ path_url=/api/profile/type-degre-handicaps 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAzOTYyNDEsImlhdCI6MTcwMDM5NTk0MSwianRpIjoiYmE0OTQ4NjAtNzQwZi00YTI0LWI1ZWYtMWJjZDZmYjJlZTVjIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiMzk4OTNkZjMtZjVmMS00ODU0LTk1ZDAtMzk4YmMxNWVhODU2IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiIzOTg5M2RmMy1mNWYxLTQ4NTQtOTVkMC0zOThiYzE1ZWE4NTYiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.dk1c3Gd4sp8qMAyCzJn8E6k7PQfth_OpP_quHQ-RwBV0cTTqRfmq3M55DI_zo68dFq5A438usA6wbBTjWWakJDon7XsNgBvAwIl2GQ3WqemvTLPnIFbhQQef9c8mI-Wm5zZjEIDGTQsXFDJYwTXBircb41yDgDjzi8dO_xbWXsKJ0gDlMDezkeERQDRXgvjFqdFz9kfLQXgdusI9v_aEvz01-e5qkoMXviB-btt4lW2qqV27iySAdkl4-urgQ9naIpJ-xZQUXNgn7F41jSHWIdTrUBZwijPjY6ATpYeSvHow3QOsjLRs2vmkNEOx44s1BemBfgaY8UlCRn9bn5t5PA', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231119 13:13:44.881" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-degre-handicaps 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/alps+json', 'Date': 'Sun, 19 Nov 2023 12:13:45 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "alps" : {
+    "version" : "1.0",
+    "descriptor" : [ {
+      "id" : "typeDegreHandicap-representation",
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-degre-handicaps",
+      "descriptor" : [ {
+        "name" : "code",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "libelle",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "description",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateDebut",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateFin",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "isdelete",
+        "type" : "SEMANTIC"
+      } ]
+    }, {
+      "id" : "create-typedegrehandicap",
+      "name" : "typedegrehandicap",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeDegreHandicap-representation"
+    }, {
+      "id" : "get-typedegrehandicap",
+      "name" : "typedegrehandicap",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeDegreHandicap-representation"
+    }, {
+      "id" : "delete-typeDegreHandicap",
+      "name" : "typeDegreHandicap",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeDegreHandicap-representation"
+    }, {
+      "id" : "get-typeDegreHandicap",
+      "name" : "typeDegreHandicap",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeDegreHandicap-representation"
+    }, {
+      "id" : "update-typeDegreHandicap",
+      "name" : "typeDegreHandicap",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeDegreHandicap-representation"
+    }, {
+      "id" : "patch-typeDegreHandicap",
+      "name" : "typeDegreHandicap",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeDegreHandicap-representation"
+    } ]
+  }
+} 
+ </msg>
+<msg timestamp="20231119 13:13:44.881" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231119 13:13:39.869" endtime="20231119 13:13:44.881"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 13:13:44.881" endtime="20231119 13:13:44.881"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 13:13:44.881" endtime="20231119 13:13:44.881"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 13:13:44.881" endtime="20231119 13:13:44.881"/>
+</kw>
+<status status="PASS" starttime="20231119 13:13:39.868" endtime="20231119 13:13:44.888"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231119 13:13:39.762" endtime="20231119 13:13:44.889"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister profile type degre handicaps">Lister profile type degre handicaps</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231119 13:13:39.869" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

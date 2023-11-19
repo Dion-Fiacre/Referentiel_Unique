@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231119 13:49:36.631" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister profile type etat point eaux" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Profile_Controller\Lister_profile_type_etat_point_eaux.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231119 13:49:36.728" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231119 13:49:36.728" endtime="20231119 13:49:36.728"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231119 13:49:36.729" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAzOTg0MzcsImlhdCI6MTcwMDM5ODEzNywianRpIjoiNTg0Zm...</msg>
+<status status="PASS" starttime="20231119 13:49:36.729" endtime="20231119 13:49:36.729"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231119 13:49:36.729" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231119 13:49:37.203" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-etat-point-eaux 
+ path_url=/api/profile/type-etat-point-eaux 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDAzOTg0MzcsImlhdCI6MTcwMDM5ODEzNywianRpIjoiNTg0ZmRiMWMtNTMwMS00NmMxLWJjNmYtNTNjOWRkMzA5ZDM0IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiNmZlMWVhOWItMmRjNy00Y2YzLWEzYmEtMDc0MjBkM2ZmYTZhIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI2ZmUxZWE5Yi0yZGM3LTRjZjMtYTNiYS0wNzQyMGQzZmZhNmEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.G-oMDkDvC_h7Xw0kR6CZdN4JEvetwSXHOpomTVa0G8dmq1kIfX_PCPV_wDPjdCnaGhq7Xhf04QnwV5bhhgVLnzXhTQF-cYBFpyhgRpeqUwIH_Qsy6joxVCcYwuOeZTMvHDbzqC63I_ijGAsRyhAfAXiBJXuqrm1tI2MGfHikfifqLEWRcQ0hARTNnAIwtmOb0A9msJj67r04DTsAVxecOgXMutxreRjyRiPOjp_zDbrBZth83ug3JBG_G45gjnsMqsjarmq0azkGZ39vUK7AAXdU9y7xkfOOqfWC7rj_4SLVyDBn92hCAh3v23EDYqmT0oXGYw_BJ--XnXBkjNYaXQ', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231119 13:49:37.210" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-etat-point-eaux 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/alps+json', 'Date': 'Sun, 19 Nov 2023 12:49:37 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "alps" : {
+    "version" : "1.0",
+    "descriptor" : [ {
+      "id" : "typeEtatPointsEau-representation",
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-etat-point-eaux",
+      "descriptor" : [ {
+        "name" : "code",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "libelle",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "description",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateDebut",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateFin",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "isdelete",
+        "type" : "SEMANTIC"
+      } ]
+    }, {
+      "id" : "create-typeetatpointeaux",
+      "name" : "typeetatpointeaux",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeEtatPointsEau-representation"
+    }, {
+      "id" : "get-typeetatpointeaux",
+      "name" : "typeetatpointeaux",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeEtatPointsEau-representation"
+    }, {
+      "id" : "delete-typeEtatPointsEau",
+      "name" : "typeEtatPointsEau",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeEtatPointsEau-representation"
+    }, {
+      "id" : "get-typeEtatPointsEau",
+      "name" : "typeEtatPointsEau",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeEtatPointsEau-representation"
+    }, {
+      "id" : "update-typeEtatPointsEau",
+      "name" : "typeEtatPointsEau",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeEtatPointsEau-representation"
+    }, {
+      "id" : "patch-typeEtatPointsEau",
+      "name" : "typeEtatPointsEau",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeEtatPointsEau-representation"
+    } ]
+  }
+} 
+ </msg>
+<msg timestamp="20231119 13:49:37.210" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231119 13:49:36.729" endtime="20231119 13:49:37.210"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 13:49:37.211" endtime="20231119 13:49:37.212"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 13:49:37.213" endtime="20231119 13:49:37.214"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 13:49:37.215" endtime="20231119 13:49:37.216"/>
+</kw>
+<status status="PASS" starttime="20231119 13:49:36.727" endtime="20231119 13:49:37.216"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231119 13:49:36.632" endtime="20231119 13:49:37.218"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister profile type etat point eaux">Lister profile type etat point eaux</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231119 13:49:36.729" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

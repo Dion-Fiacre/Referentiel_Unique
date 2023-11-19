@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231119 15:30:30.860" rpa="false" schemaversion="4">
+<suite id="s1" name="Lister profile type milieu etablissements" source="C:\Users\LENOVO\PycharmProjects\Api_Referentiel\Referentiel_Unique\Tets_cases\Profile_Controller\Lister_profile_type_milieu_etablissements.robot">
+<test id="s1-t1" name="Parametres" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>ma_session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231119 15:30:30.959" level="INFO">Creating Session using : alias=ma_session, url=http://sige-referentiel-service.dev.defisetstrategies.dev/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231119 15:30:30.959" endtime="20231119 15:30:30.959"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Authorization=${bearerToken}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231119 15:30:30.960" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDA0MDQ0ODAsImlhdCI6MTcwMDQwNDE4MCwianRpIjoiNWRmOT...</msg>
+<status status="PASS" starttime="20231119 15:30:30.959" endtime="20231119 15:30:30.960"/>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>ma_session</arg>
+<arg>${endpoint}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<msg timestamp="20231119 15:30:30.960" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20231119 15:30:33.326" level="INFO">GET Request : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-milieu-etablissements 
+ path_url=/api/profile/type-milieu-etablissements 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDUENBalAxM3lKbGdoSXJZYkp0QnBQc1NZeVBNMHRSaGpNdHJVUkh1TXJ3In0.eyJleHAiOjE3MDA0MDQ0ODAsImlhdCI6MTcwMDQwNDE4MCwianRpIjoiNWRmOTY5YTMtNWQwMC00ZDJhLTk1MDMtY2M4NDIyNTc1ZDU4IiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGVmaXNldHN0cmF0ZWdpZXMuZGV2L3JlYWxtcy9zaWdlbWVuYSIsImF1ZCI6WyJhY2NvdW50IiwiYXhlbG9yLWRldi10ZXN0Il0sInN1YiI6IjJhMDAyZmRiLTkzMzEtNDc2Zi05YzFjLWE2MDQ2NDBiNmIyMyIsInR5cCI6IkJlYXJlciIsImF6cCI6InBvcnRhaWwtYmFja29mZmljZS1kZXYiLCJzZXNzaW9uX3N0YXRlIjoiNGVlMDBjNzEtODY2Ny00M2I4LWEwNDEtNTk5Zjg5Y2QwY2UxIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtc2lnZW1lbmEiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJvbGUucmgiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sImF4ZWxvci1kZXYtdGVzdCI6eyJyb2xlcyI6WyJBZG1pbiIsInJvbGUucmgiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI0ZWUwMGM3MS04NjY3LTQzYjgtYTA0MS01OTlmODljZDBjZTEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJFdGllbiBHaGlzbGFpbiBHaGlzbGFpbiIsInByZWZlcnJlZF91c2VybmFtZSI6IjAxODA2NnciLCJnaXZlbl9uYW1lIjoiRXRpZW4gR2hpc2xhaW4iLCJmYW1pbHlfbmFtZSI6IkdoaXNsYWluIiwiZW1haWwiOiJnaGlzbGFpbmV0aWVuQGdtYWlsLmNvbSJ9.WcFz8gKNzGMj-VJtYHIvxabAyuTt8mW-I0c8XOkyy0YMvrIQ0bE_WOSMhtK-LWEH3V59Y9v8Z155hHMXJQjwnkHUoBJQPyI2D65SSS-sVax5NiONt8ZU2P4ReYA8JWHU389MBDUj9wKiTJm6217UCLTNrlXcj5qPoBVAEe5gFwdR7El1dp5fgrZyymihDtVTAL9OxivN7W1wk8O7TRg_4yUHyO55E4BHQCdMjmLHdFE7R82fbtbI1oNeEWvJuk1wfo5GBNzeQiuWXhpQJiW8Fm8ZOrc9HfBdxwN6ONtY0psvpCVetmkUtLGpOcHVId4RPLWtHg273qr9BbFm7LfliA', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20231119 15:30:33.332" level="INFO">GET Response : url=http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-milieu-etablissements 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Content-Type': 'application/alps+json', 'Date': 'Sun, 19 Nov 2023 14:30:33 GMT', 'Expires': '0', 'Pragma': 'no-cache', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-Xss-Protection': '0', 'Transfer-Encoding': 'chunked'} 
+ body={
+  "alps" : {
+    "version" : "1.0",
+    "descriptor" : [ {
+      "id" : "typeMilieuEtablissement-representation",
+      "href" : "http://sige-referentiel-service.dev.defisetstrategies.dev/api/profile/type-milieu-etablissements",
+      "descriptor" : [ {
+        "name" : "code",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "libelle",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "description",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateDebut",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "dateFin",
+        "type" : "SEMANTIC"
+      }, {
+        "name" : "isdelete",
+        "type" : "SEMANTIC"
+      } ]
+    }, {
+      "id" : "create-typemilieuetablissement",
+      "name" : "typemilieuetablissement",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeMilieuEtablissement-representation"
+    }, {
+      "id" : "get-typemilieuetablissement",
+      "name" : "typemilieuetablissement",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeMilieuEtablissement-representation"
+    }, {
+      "id" : "delete-typeMilieuEtablissement",
+      "name" : "typeMilieuEtablissement",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeMilieuEtablissement-representation"
+    }, {
+      "id" : "get-typeMilieuEtablissement",
+      "name" : "typeMilieuEtablissement",
+      "type" : "SAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeMilieuEtablissement-representation"
+    }, {
+      "id" : "update-typeMilieuEtablissement",
+      "name" : "typeMilieuEtablissement",
+      "type" : "IDEMPOTENT",
+      "descriptor" : [ ],
+      "rt" : "#typeMilieuEtablissement-representation"
+    }, {
+      "id" : "patch-typeMilieuEtablissement",
+      "name" : "typeMilieuEtablissement",
+      "type" : "UNSAFE",
+      "descriptor" : [ ],
+      "rt" : "#typeMilieuEtablissement-representation"
+    } ]
+  }
+} 
+ </msg>
+<msg timestamp="20231119 15:30:33.332" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231119 15:30:30.960" endtime="20231119 15:30:33.332"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 15:30:33.333" endtime="20231119 15:30:33.335"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 15:30:33.335" endtime="20231119 15:30:33.337"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231119 15:30:33.338" endtime="20231119 15:30:33.339"/>
+</kw>
+<status status="PASS" starttime="20231119 15:30:30.958" endtime="20231119 15:30:33.340"/>
+</test>
+<doc>Afficher la liste des applications</doc>
+<status status="PASS" starttime="20231119 15:30:30.862" endtime="20231119 15:30:33.341"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lister profile type milieu etablissements">Lister profile type milieu etablissements</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231119 15:30:30.960" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>
